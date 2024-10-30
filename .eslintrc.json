@@ -1,0 +1,54 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@tanstack/eslint-plugin-query/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/jsx-runtime",
+		"prettier"
+	],
+	"plugins": ["react", "@typescript-eslint", "prettier", "@vitest", "eslint-plugin-import-helpers"],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/resolver": {
+			"node": {
+				"paths": ["src"],
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	},
+	"rules": {
+		"prettier/prettier": "error",
+		"no-console": "error",
+		"no-underscore-dangle": 0,
+		"react/no-unescaped-entities": 0,
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": ["/^react$/", "/^@[a-zA-Z]/", "module", "/^@/", ["parent", "sibling", "index"]],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": true
+				}
+			}
+		],
+		"react/prop-types": 0,
+		"react/no-unknown-property": 0
+	},
+	"ignorePatterns": ["node_modules"]
+}
