@@ -32,9 +32,9 @@ const SignIn = () => {
 				<div className="h-full w-full bg-black md:bg-backdrop">
 					<header
 						id="header"
-						className="min-h-80 w-full md:px-24 xl:mx-120"
+						className="min-h-80 w-full md:px-24 xl:px-120"
 					>
-						<div className="flex h-80 items-center">
+						<div className="flex h-80 w-fit items-center">
 							<NetflixLogo className="h-24 fill-red px-20 md:h-40 md:scale-75 lg:scale-100" />
 						</div>
 					</header>
