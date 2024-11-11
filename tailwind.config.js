@@ -7,6 +7,12 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				white30Percent: '#FFFFFF30',
+				smokeWhite: '#E5E5E5',
+				midGray: '#6D6D6E',
+				gray: '#808080',
+				black: '#141414',
+				red: '#B9090B',
 				/** primary and secondary
 				 * The application's main colors
 				 * used for:
@@ -136,6 +142,7 @@ export default {
 				160: '16rem',
 			},
 			borderRadius: {
+				xs: '2px',
 				sm: '4px',
 				md: '8px',
 				lg: '12px',
@@ -153,23 +160,26 @@ export default {
 				overlay: 1060,
 				tooltip: 1070,
 			},
-			transitionProperty: {
-				default: 'all',
-				fast: 'all',
-			},
-			transitionTimingFunction: {
-				default: 'ease',
-				fast: 'ease',
-			},
-			transitionDuration: {
-				default: '300ms',
-				fast: '150ms',
-			},
 			screens: {
 				sm: '480px',
 				md: '768px',
 				lg: '992px',
 				xl: '1400px',
+			},
+			backgroundColor: {
+				backdrop: 'rgb(0,0,0, 0.4)',
+			},
+			backgroundImage: {
+				'netflix-thumb': "url('/assets/images/backgrounds/thumb.jpg')",
+			},
+			keyframes: {
+				pulse: {
+					'0%, 100%': { opacity: 1 },
+					'50%': { opacity: 0.5 },
+				},
+			},
+			animation: {
+				pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 			},
 		},
 	},

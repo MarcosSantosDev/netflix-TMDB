@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Icon, Input } from '../';
+import { Icon, InputBase } from '../';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
 
@@ -12,31 +12,23 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Omit<InputProps, 'type'
 	};
 
 	return (
-		<div className="relative">
-			<Input
+		<div className="flex items-center gap-4 rounded-sm border border-white30Percent pr-4 focus-within:ring-2 focus-within:ring-neutral-100">
+			<InputBase
 				type={showPassword ? 'text' : 'password'}
 				ref={ref}
-				className="pr-40"
+				className="group focus-visible:ring-0"
 				{...props}
 			/>
 			<button
 				type="button"
 				onClick={togglePasswordVisibility}
-				className="absolute inset-y-0 right-4 top-4 flex h-32 w-32 items-center justify-center rounded-full bg-transparent text-neutral-500 hover:bg-neutral-50 hover:text-neutral-700"
+				className="flex h-32 w-auto items-center justify-center rounded-full bg-transparent p-8 text-neutral-1 hover:bg-neutral-900 focus-visible:bg-neutral-600 focus-visible:outline-none"
 			>
-				{showPassword ? (
-					<Icon
-						className="bg-transparent"
-						name={'eye'}
-						size="md"
-					/>
-				) : (
-					<Icon
-						className="bg-transparent"
-						name={'eye-off'}
-						size="md"
-					/>
-				)}
+				<Icon
+					className="bg-transparent"
+					name={showPassword ? 'eye' : 'eye-off'}
+					size="md"
+				/>
 			</button>
 		</div>
 	);

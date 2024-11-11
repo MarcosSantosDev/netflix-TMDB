@@ -5,12 +5,9 @@ import { RouteObject } from 'react-router-dom';
 import { RouteErrorElement } from '@/components/app';
 import PrivateLayout from '@/layouts/PrivateLayout/PrivateLayout';
 
-import { appRoutesNavigation } from './app.routes';
 import routePaths from './routePaths';
-import routesNavigationToConfig from './routesNavigationToConfig';
 
 const SignIn = React.lazy(() => import('@/pages/SignIn'));
-const SignUp = React.lazy(() => import('@/pages/SignUp'));
 
 export const routes: RouteObject[] = [
 	{
@@ -18,19 +15,24 @@ export const routes: RouteObject[] = [
 		id: 'ROOT',
 		path: routePaths.ROOT,
 		element: <PrivateLayout />,
-		children: routesNavigationToConfig(appRoutesNavigation),
+		children: [
+			{
+				id: 'PROFILE',
+				path: routePaths.PROFILE,
+				element: <div>PROFILE</div>,
+			},
+			{
+				id: 'HOME',
+				path: routePaths.HOME,
+				element: <div>HOME</div>,
+			},
+		],
 	},
 	{
 		errorElement: <RouteErrorElement />,
-		id: 'ROOT_SIGN_IN',
-		path: routePaths.ROOT_SIGN_IN,
+		id: 'SIGN_IN',
+		path: routePaths.SIGN_IN,
 		element: <SignIn />,
-	},
-	{
-		errorElement: <RouteErrorElement />,
-		id: 'ROOT_SIGN_UP',
-		path: routePaths.ROOT_SIGN_UP,
-		element: <SignUp />,
 	},
 ];
 

@@ -3,7 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Input, Button, Form } from '@/components/ui';
+import { Input, Button, Label } from '@/components/ui';
+import * as Form from '@/components/ui/form';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 
 import { useAuth } from '../../hooks/useAuth';
@@ -34,55 +35,39 @@ const SignInForm = () => {
 	};
 
 	return (
-		<Form.Form {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex flex-col gap-16"
-				autoComplete="off"
+		<form
+			onSubmit={form.handleSubmit(onSubmit)}
+			className="flex flex-col gap-20"
+			autoComplete="off"
+		>
+			<div className="grid grid-cols-1 space-y-6">
+				<Form.FormFieldContent>
+					<Label htmlFor="email">E-mail</Label>
+					<Input
+						{...form.register('email')}
+						id="email"
+						type="text"
+						placeholder="E-mail"
+					/>
+					<Form.FormMessage error={form.formState.errors.email} />
+				</Form.FormFieldContent>
+				<Form.FormFieldContent>
+					<Label htmlFor="password">Senha</Label>
+					<PasswordInput
+						{...form.register('password')}
+						id="password"
+						placeholder="*******"
+					/>
+					<Form.FormMessage error={form.formState.errors.password} />
+				</Form.FormFieldContent>
+			</div>
+			<Button
+				type="submit"
+				disabled={isLoading}
 			>
-				<div className="grid grid-cols-1 space-y-6">
-					<Form.FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<Form.FormItem>
-								<Form.FormLabel>E-mail</Form.FormLabel>
-								<Form.FormControl>
-									<Input
-										{...field}
-										type="text"
-										placeholder="E-mail"
-									/>
-								</Form.FormControl>
-								<Form.FormMessage />
-							</Form.FormItem>
-						)}
-					/>
-					<Form.FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<Form.FormItem>
-								<Form.FormLabel>Senha</Form.FormLabel>
-								<Form.FormControl>
-									<PasswordInput
-										{...field}
-										placeholder="*******"
-									/>
-								</Form.FormControl>
-								<Form.FormMessage />
-							</Form.FormItem>
-						)}
-					/>
-				</div>
-				<Button
-					type="submit"
-					disabled={isLoading}
-				>
-					Sign In
-				</Button>
-			</form>
-		</Form.Form>
+				Entrar
+			</Button>
+		</form>
 	);
 };
 

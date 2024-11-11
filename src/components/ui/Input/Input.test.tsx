@@ -25,20 +25,13 @@ describe('Input Component', () => {
 		expect(input).toHaveClass('custom-class');
 	});
 
-	it('should not display error message when error prop is undefined', () => {
-		render(<Input type="text" />);
-
-		const errorElement = screen.queryByText(/This field is required/i);
-		expect(errorElement).not.toBeInTheDocument();
-	});
-
 	it('should allow typing in the input field', async () => {
 		render(<Input type="text" />);
 
 		const input = screen.getByRole('textbox');
-		await userEvent.type(input, 'React Testing');
+		await userEvent.type(input, 'White on input');
 
-		expect(input).toHaveValue('React Testing');
+		expect(input).toHaveValue('White on input');
 	});
 
 	it('should forward the ref correctly', () => {
@@ -65,15 +58,25 @@ describe('Input Component', () => {
 		expect(input).toBeDisabled();
 	});
 
-	it('should render input of type password correctly', () => {
-		render(
+	it('should render input type correctly', () => {
+		const { rerender } = render(
 			<Input
-				type="password"
-				placeholder="password"
+				data-testid="input-type-email"
+				type="email"
 			/>
 		);
 
-		const input = screen.getByPlaceholderText('password');
-		expect(input).toHaveAttribute('type', 'password');
+		const inputTypeEmail = screen.getByTestId('input-type-email');
+		expect(inputTypeEmail).toHaveAttribute('type', 'email');
+
+		rerender(
+			<Input
+				data-testid="input-type-password"
+				type="password"
+			/>
+		);
+
+		const inputTypePassword = screen.getByTestId('input-type-password');
+		expect(inputTypePassword).toHaveAttribute('type', 'password');
 	});
 });

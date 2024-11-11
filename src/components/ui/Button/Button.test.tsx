@@ -6,36 +6,42 @@ import { vi } from 'vitest';
 import { Button } from './Button';
 
 describe('Button Component', () => {
-	it('should render the button with default props', () => {
+	it('should render in the document', () => {
 		render(<Button>Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });
 		expect(button).toBeInTheDocument();
-		expect(button).toHaveClass('bg-primary-400');
 	});
 
-	it('should apply the primary variant by default', () => {
+	it('should render the button with variant primary classes', () => {
 		render(<Button>Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });
-		expect(button).toHaveClass('bg-primary-400');
+		expect(button).toHaveClass('bg-red text-neutral-1 shadow hover:bg-red/90');
 	});
 
-	it('should render with secondary variant when passed', () => {
+	it('should render the button by variant secondary classes', () => {
 		render(<Button variant="secondary">Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });
-		expect(button).toHaveClass('bg-neutral-900');
+		expect(button).toHaveClass('bg-neutral-800 text-neutral-50 shadow hover:bg-neutral-900/90');
 	});
 
-	it('should render with the outline variant', () => {
-		render(<Button variant="outline">Click Me</Button>);
+	it('should render the button by variant link classes', () => {
+		render(<Button variant="link">Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });
-		expect(button).toHaveClass('border-neutral-200 bg-white');
+		expect(button).toHaveClass('text-neutral-50 underline-offset-4 hover:underline');
 	});
 
-	it('should render with size lg', () => {
+	it('should render default size with "md" classes', () => {
+		render(<Button>Click Me</Button>);
+
+		const button = screen.getByRole('button', { name: /click me/i });
+		expect(button).toHaveClass('h-40 px-3');
+	});
+
+	it('should render the button with size "lg"', () => {
 		render(<Button size="lg">Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });

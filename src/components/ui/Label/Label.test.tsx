@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { Label } from './Label'; // O caminho pode variar
 
 describe('Label component', () => {
-	it('should render the label correctly', () => {
+	it('should render in the document', () => {
 		const { getByText } = render(<Label>Test Label</Label>);
 		expect(getByText('Test Label')).toBeInTheDocument();
 	});
@@ -11,7 +11,9 @@ describe('Label component', () => {
 	it('should apply default classes', () => {
 		const { container } = render(<Label>Test Label</Label>);
 		const labelElement = container.firstChild;
-		expect(labelElement).toHaveClass('text-sm font-medium leading-none');
+		expect(labelElement).toHaveClass(
+			'text-md font-medium leading-none text-neutral-1 peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+		);
 	});
 
 	it('should apply custom className', () => {
