@@ -1,9 +1,9 @@
-const ExamplePage = () => {
+const ProfilePage = () => {
 	return (
-		<div>
-			<p className="text-lg">ExamplePage 02</p>
+		<div className="relative h-screen w-screen bg-black">
+			<p className="text-lg text-neutral-1">Profile</p>
 		</div>
 	);
 };
 
-export default ExamplePage;
+export default ProfilePage;

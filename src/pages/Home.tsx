@@ -1,9 +1,9 @@
-const ExamplePage = () => {
+const HomePage = () => {
 	return (
-		<div>
-			<p className="text-lg">ExamplePage 01</p>
+		<div className="relative h-screen w-screen bg-black">
+			<p className="text-lg text-neutral-1">Home</p>
 		</div>
 	);
 };
 
-export default ExamplePage;
+export default HomePage;

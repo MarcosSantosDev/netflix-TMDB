@@ -8,6 +8,8 @@ import PrivateLayout from '@/layouts/PrivateLayout/PrivateLayout';
 import routePaths from './routePaths';
 
 const SignIn = React.lazy(() => import('@/pages/SignIn'));
+const Profile = React.lazy(() => import('@/pages/Profile'));
+const Home = React.lazy(() => import('@/pages/Home'));
 
 export const routes: RouteObject[] = [
 	{
@@ -19,12 +21,12 @@ export const routes: RouteObject[] = [
 			{
 				id: 'PROFILE',
 				path: routePaths.PROFILE,
-				element: <div>PROFILE</div>,
+				element: <Profile />,
 			},
 			{
 				id: 'HOME',
 				path: routePaths.HOME,
-				element: <div>HOME</div>,
+				element: <Home />,
 			},
 		],
 	},

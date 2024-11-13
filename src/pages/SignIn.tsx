@@ -7,7 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import SignInForm from '@/features/auth/components/SignInForm/SignInForm';
 import PublicLayout from '@/layouts/PublicLayout/PublicLayout';
 
-const SignIn = () => {
+const SignInPage = () => {
 	const location = useLocation();
 
 	const onLoginWithAccessCode = () => {
@@ -80,4 +80,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default SignInPage;
