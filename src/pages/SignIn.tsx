@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import { SEO } from '@/components/app';
-import NetflixLogo from '@/components/app/SVG';
+import { SignInHeader } from '@/components/app/Header';
 import { Button } from '@/components/ui';
 import { Checkbox } from '@/components/ui/checkbox';
 import SignInForm from '@/features/auth/components/SignInForm/SignInForm';
@@ -30,14 +30,7 @@ const SignInPage = () => {
 			>
 				<div className="absolute -z-10 hidden min-h-screen w-full overflow-hidden bg-netflix-thumb bg-cover bg-no-repeat md:block" />
 				<div className="h-full w-full bg-black md:bg-backdrop">
-					<header
-						id="header"
-						className="min-h-80 w-full md:px-24 xl:px-120"
-					>
-						<div className="flex h-80 w-fit items-center">
-							<NetflixLogo className="h-24 fill-red px-20 md:h-40 md:scale-75 lg:scale-100" />
-						</div>
-					</header>
+					<SignInHeader />
 					<div className="m-20 h-auto max-h-[600px] max-w-full space-y-20 self-end rounded-sm bg-black/80 md:mx-auto md:my-28 md:max-w-[450px] md:p-48">
 						<div className="grid grid-cols-1 gap-10">
 							<h2 className="text-nowrap text-xxl font-bold text-neutral-1">Entrar</h2>

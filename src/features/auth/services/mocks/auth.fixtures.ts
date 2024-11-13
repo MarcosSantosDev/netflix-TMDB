@@ -1,7 +1,7 @@
 import { AuthUser } from '../../types/auth.types';
 
 export const defaultAuthData = {
-	email: 'marcossantosdev@example.com',
+	email: 'marcos@example.com',
 	password: 'password',
 };
 

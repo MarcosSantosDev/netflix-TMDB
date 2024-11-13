@@ -21,7 +21,7 @@ const sizes = {
 	sm: 14,
 	md: 16,
 	lg: 18,
-	xl: 20,
+	xl: 50,
 };
 
 export const Icon = ({ name, size, ...props }: IconProps) => {
