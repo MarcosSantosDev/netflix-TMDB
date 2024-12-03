@@ -22,7 +22,7 @@ export const ProfileButton = ({ children, label, onClick }: ProfileProps) => {
 			>
 				{children}
 			</div>
-			<p className="text-lg text-neutral-1">{label}</p>
+			<p className="max-w-full truncate text-lg text-neutral-1">{label}</p>
 		</button>
 	);
 };
