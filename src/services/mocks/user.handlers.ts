@@ -1,13 +1,13 @@
 import { http } from 'msw';
 
-import { createErrorResponse, createSuccessResponse } from '@/libs/msw/responseFactory';
-import { userDB } from '@/mocks/msw/db';
+import { userMethods } from '@/@mocks/msw/database/modelMethods';
+import { createErrorResponse, createSuccessResponse } from '@/@mocks/msw/responseFactory';
 
 export const userHandlers = [
 	http.get('api/me/:id', ({ params }) => {
 		try {
 			const { id } = params as { id: string };
-			const userFound = userDB.readUserById(id);
+			const userFound = userMethods.readUserById(id);
 
 			if (userFound) {
 				return createSuccessResponse({

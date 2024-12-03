@@ -1,8 +1,7 @@
+import { AuthSignInPayload } from '@/features/auth/services/auth.types';
+import { useAuthSignInUserMutation } from '@/features/auth/services/react-query/useAuthSignInUserMutation';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 import localStorageUtils from '@/utils/localStorage';
-
-import { useAuthSignInUserMutation } from '../services/react-query/useAuthSignInUserMutation';
-import { AuthSignInPayload } from '../types/auth.types';
 
 export const useAuth = () => {
 	const { setLoggedUser, resetLoggedUser, ...stateAuthStore } = useAuthenticatedUserStore();

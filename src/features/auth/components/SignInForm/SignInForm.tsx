@@ -6,16 +6,17 @@ import { z } from 'zod';
 import { Input, Button, Label } from '@/components/ui';
 import * as Form from '@/components/ui/form';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
-
-import { useAuth } from '../../hooks/useAuth';
-import { AuthSignInPayload } from '../../types/auth.types';
+import { useAuth } from '@/features/auth/hooks/useAuth';
 
 const schema = z.object({
 	email: z.string().min(1, 'Informe seu email.').email('Informe um email valido'),
 	password: z.string().min(1, 'Informe sua senha.').min(4, 'Senha muito curta - deve conter no mínimo 4 letras.'),
 });
 
-type SignInFormData = AuthSignInPayload;
+type SignInFormData = {
+	email: string;
+	password: string;
+};
 
 const SignInForm = () => {
 	const form = useForm<SignInFormData>({

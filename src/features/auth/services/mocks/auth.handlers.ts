@@ -1,8 +1,8 @@
 import { http } from 'msw';
 
-import type { AuthSignInPayload } from '@/features/auth/types/auth.types';
-import { createErrorResponse, createSuccessResponse } from '@/libs/msw/responseFactory';
-import { userDB } from '@/mocks/msw/db';
+import { userMethods } from '@/@mocks/msw/database/modelMethods';
+import { createErrorResponse, createSuccessResponse } from '@/@mocks/msw/responseFactory';
+import type { AuthSignInPayload } from '@/features/auth/services/auth.types';
 
 import { generateJWTToken } from './auth.functions';
 
@@ -11,7 +11,7 @@ export const authHandlers = [
 		const { email, password } = await request.json();
 
 		try {
-			const userFound = userDB.readUserByCredentials({ email, password });
+			const userFound = userMethods.readUserByCredentials({ email, password });
 
 			if (userFound) {
 				const accessToken = generateJWTToken({});

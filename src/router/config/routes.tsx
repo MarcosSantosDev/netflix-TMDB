@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RouteObject } from 'react-router-dom';
 
 import { RouteErrorElement } from '@/components/app';
-import PrivateLayout from '@/layouts/PrivateLayout/PrivateLayout';
+import PrivateLayout from '@/layouts/PrivateLayout';
 
 import routePaths from './routePaths';
 

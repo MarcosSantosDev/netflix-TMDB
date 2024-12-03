@@ -1,10 +1,10 @@
-type ProfileDB = {
+export type ProfileDB = {
 	id: string;
 	name: string;
 	photoURL: string;
 };
 
-export type Profile = ProfileDB;
+export type ReadProfile = ProfileDB;
 
 export type NewProfile = Omit<ProfileDB, 'id'>;
 

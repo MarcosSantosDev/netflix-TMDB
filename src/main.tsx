@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import ReactDOM from 'react-dom/client';
 
-import { enableMocking } from '@/libs/msw/browser';
+import { enableMocking } from '@/@mocks/msw/config/browser';
 
 import '@/styles/globals.css';
 

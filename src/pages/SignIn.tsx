@@ -1,15 +1,11 @@
-import { useLocation } from 'react-router-dom';
-
 import { SEO } from '@/components/app';
-import { SignInHeader } from '@/components/app/Header';
+import { Header } from '@/components/app';
 import { Button } from '@/components/ui';
 import { Checkbox } from '@/components/ui/checkbox';
 import SignInForm from '@/features/auth/components/SignInForm/SignInForm';
-import PublicLayout from '@/layouts/PublicLayout/PublicLayout';
+import PublicLayout from '@/layouts/PublicLayout';
 
 const SignInPage = () => {
-	const location = useLocation();
-
 	const onLoginWithAccessCode = () => {
 		// Lógica de login com Google
 	};
@@ -24,13 +20,10 @@ const SignInPage = () => {
 				}}
 			/>
 
-			<div
-				key={location.pathname}
-				className="relative h-screen w-screen"
-			>
+			<div className="relative h-screen w-screen">
 				<div className="absolute -z-10 hidden min-h-screen w-full overflow-hidden bg-netflix-thumb bg-cover bg-no-repeat md:block" />
 				<div className="h-full w-full bg-black md:bg-backdrop">
-					<SignInHeader />
+					<Header />
 					<div className="m-20 h-auto max-h-[600px] max-w-full space-y-20 self-end rounded-sm bg-black/80 md:mx-auto md:my-28 md:max-w-[450px] md:p-48">
 						<div className="grid grid-cols-1 gap-10">
 							<h2 className="text-nowrap text-xxl font-bold text-neutral-1">Entrar</h2>

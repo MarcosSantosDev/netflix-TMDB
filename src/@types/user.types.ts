@@ -1,16 +1,12 @@
-import { Profile } from './profile.types';
+import { ReadProfile } from './profile.types';
 
-type UserDB = {
+export type UserDB = {
 	id: string;
 	email: string;
 	password: string;
 	displayName: string;
-	photoURL?: string | null;
-	profession?: string | null;
-	profiles: Profile[];
+	profiles: ReadProfile[];
 };
-
-export type User = UserDB;
 
 export type ReadUser = Omit<UserDB, 'password'>;
 

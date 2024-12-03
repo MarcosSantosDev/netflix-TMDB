@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import NetflixLogo from '@/components/app/SVG';
+import { Header } from '@/components/app';
 import { NewProfile, ProfileButton } from '@/features/profiles/components';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 
@@ -13,9 +13,7 @@ const ProfilesPage = () => {
 
 	return (
 		<div className="relative h-screen w-screen bg-black">
-			<header className="flex h-full max-h-header w-full items-center justify-center md:px-24 xl:px-120">
-				<NetflixLogo className="h-24 fill-red md:h-48" />
-			</header>
+			<Header />
 
 			<div
 				className={clsx(
