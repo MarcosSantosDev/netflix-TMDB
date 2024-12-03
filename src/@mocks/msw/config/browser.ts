@@ -1,7 +1,7 @@
 import { setupWorker } from 'msw/browser';
 
-import { handlers } from '@/@mocks/msw/app.handlers';
 import { env } from '@/env';
+import { handlers } from '@/services/@mocks/handlers/app.handlers';
 
 const worker = setupWorker(...handlers);
 
