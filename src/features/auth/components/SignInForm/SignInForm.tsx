@@ -21,14 +21,13 @@ const SignInForm = () => {
 	const form = useForm<SignInFormData>({
 		mode: 'onSubmit',
 		defaultValues: {
-			email: '',
-			password: '',
-			remember: false,
+			email: 'marcos@example.com',
+			password: 'password',
 		},
 		resolver: zodResolver(schema),
 	});
 
-	const { signIn, isLoading } = useAuth();
+	const { signIn, isLoadingSignIn } = useAuth();
 
 	const onSubmit = (credentials: SignInFormData) => {
 		signIn(credentials);
@@ -63,7 +62,7 @@ const SignInForm = () => {
 			</div>
 			<Button
 				type="submit"
-				disabled={isLoading}
+				disabled={isLoadingSignIn}
 			>
 				Entrar
 			</Button>

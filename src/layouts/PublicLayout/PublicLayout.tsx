@@ -9,7 +9,7 @@ const PublicLayout = ({ children }: React.PropsWithChildren) => {
 	if (isAuthenticated) {
 		return (
 			<Navigate
-				to={routePaths.PROFILE}
+				to={routePaths.PROFILES}
 				replace={true}
 			/>
 		);

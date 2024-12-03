@@ -2,7 +2,7 @@ import { setupWorker } from 'msw/browser';
 
 import { env } from '@/env';
 
-import { handlers } from './handlers';
+import { handlers } from './app.handlers';
 
 const worker = setupWorker(...handlers);
 

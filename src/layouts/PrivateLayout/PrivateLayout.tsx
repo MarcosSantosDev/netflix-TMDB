@@ -21,7 +21,7 @@ const PrivateLayout = () => {
 	if (location.pathname === routePaths.ROOT) {
 		return (
 			<Navigate
-				to={routePaths.PROFILE}
+				to={routePaths.PROFILES}
 				replace={true}
 			/>
 		);

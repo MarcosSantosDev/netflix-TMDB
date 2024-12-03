@@ -168,6 +168,10 @@ export default {
 				lg: '992px',
 				xl: '1400px',
 			},
+			maxHeight: {
+				container: 'calc(100vh - 80px)',
+				header: '80px',
+			},
 			backgroundColor: {
 				backdrop: 'rgb(0,0,0, 0.4)',
 			},

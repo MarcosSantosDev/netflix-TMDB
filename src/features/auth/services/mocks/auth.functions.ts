@@ -3,8 +3,6 @@ import Utf8 from 'crypto-js/enc-utf8';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import { jwtDecode } from 'jwt-decode';
 
-import { defaultUserAuthenticatedData } from './auth.fixtures';
-
 const jwtSecret = 'some-secret-code-goes-here';
 
 const base64url = (source: CryptoJS.lib.WordArray) => {
@@ -90,19 +88,17 @@ export const generateAccessToken = ({ authHeader }: GenerateAccessTokenParams): 
 		return null;
 	}
 
-	const [scheme, accessToken] = authHeader.split(' ');
+	const [scheme, headerAccessToken] = authHeader.split(' ');
 
-	if (scheme !== 'Bearer' || !accessToken) {
+	if (scheme !== 'Bearer' || !headerAccessToken) {
 		return null;
 	}
 
-	if (verifyJWTToken(accessToken)) {
-		const { id }: { id: string } = jwtDecode(accessToken);
+	if (verifyJWTToken(headerAccessToken)) {
+		const { id }: { id: string } = jwtDecode(headerAccessToken);
 
-		if (defaultUserAuthenticatedData) {
-			const accessToken = generateJWTToken({ id });
-			return { accessToken };
-		}
+		const accessToken = generateJWTToken({ id });
+		return { accessToken };
 	}
 
 	return null;

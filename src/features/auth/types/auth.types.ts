@@ -1,26 +1,12 @@
-export type AuthUser = {
-	displayName: string;
-	photoURL?: string;
-	email: string;
-	profession?: string;
-};
+import { SuccessResponse } from '@/@types/http.types';
+import { ReadUser } from '@/@types/user.types';
 
-export type AuthUserReturn = AuthUser;
+export type AuthSignInReturn = SuccessResponse<{
+	user: ReadUser;
+	access_token: string;
+}>;
 
 export type AuthSignInPayload = {
 	email: string;
 	password: string;
-	remember: boolean;
-};
-
-export type AuthSignInReturn = {
-	user: AuthUser;
-	access_token: string;
-};
-
-export type AuthSignUpPayload = {
-	userName: string;
-	email: string;
-	password: string;
-	confirmation_password: string;
 };
