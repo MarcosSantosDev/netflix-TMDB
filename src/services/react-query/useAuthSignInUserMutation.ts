@@ -3,9 +3,8 @@ import { useMutation } from '@tanstack/react-query';
 import { SuccessResponse } from '@/@types/http.types';
 import { ReadUser } from '@/@types/user.types';
 import { queryClient } from '@/libs/react-query';
+import authService from '@/services/auth.services';
 import { GET_USER_BY_ID_QUERY_KEY, UseGetUserByIdQueryKey } from '@/services/react-query/useGetUserByIdQuery';
-
-import authService from '../auth.services';
 
 const AUTH_SIGNIN_USER_MUTATION_KEY = 'authSignInUserMutation';
 

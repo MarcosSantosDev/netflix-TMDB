@@ -1,5 +1,5 @@
-import { AuthSignInPayload } from '@/features/auth/services/auth.types';
-import { useAuthSignInUserMutation } from '@/features/auth/services/react-query/useAuthSignInUserMutation';
+import { AuthSignInPayload } from '@/services/@types/auth.types';
+import { useAuthSignInUserMutation } from '@/services/react-query/useAuthSignInUserMutation';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 import localStorageUtils from '@/utils/localStorage';
 

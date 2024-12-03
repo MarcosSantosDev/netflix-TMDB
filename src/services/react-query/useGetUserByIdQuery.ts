@@ -1,8 +1,7 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
+import userService from '@/services/user.services';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
-
-import userService from '../user.services';
 
 export const GET_USER_BY_ID_QUERY_KEY = 'getUserById';
 

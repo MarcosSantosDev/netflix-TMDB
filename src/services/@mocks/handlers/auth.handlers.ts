@@ -2,9 +2,8 @@ import { http } from 'msw';
 
 import { userMethods } from '@/@mocks/msw/database/modelMethods';
 import { createErrorResponse, createSuccessResponse } from '@/@mocks/msw/responseFactory';
-import type { AuthSignInPayload } from '@/features/auth/services/auth.types';
-
-import { generateJWTToken } from './auth.functions';
+import { generateJWTToken } from '@/services/@mocks/functions/auth.functions';
+import type { AuthSignInPayload } from '@/services/@types/auth.types';
 
 export const authHandlers = [
 	http.post<never, AuthSignInPayload>('api/auth/sign-in', async ({ request }) => {

@@ -1,5 +1,5 @@
-import type { AuthSignInPayload, AuthSignInReturn } from '@/features/auth/services/auth.types';
 import { apiClient } from '@/libs/axios';
+import type { AuthSignInPayload, AuthSignInReturn } from '@/services/@types/auth.types';
 
 const authService = {
 	authSingIn: async (data: AuthSignInPayload) => {
