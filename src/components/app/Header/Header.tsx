@@ -2,18 +2,19 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import { ReadProfile } from '@/@types/profile.types';
 import NetflixLogo from '@/components/app/SVG/NetflixLogo';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
-import { ProfileButton } from './ProfileButton';
+import { ProfileMenu } from './ProfileMenu';
 
 function Header() {
 	const { data: user } = useGetUserByIdQuery();
 
 	const { isAuthenticated, selectedProfileId } = useAuthenticatedUserStore();
 
-	const profile = React.useMemo(() => {
+	const profile = React.useMemo((): ReadProfile | null => {
 		const profiles = user?.profiles ?? [];
 		if (selectedProfileId && profiles.length) {
 			return profiles.find((profile) => profile.id === selectedProfileId) ?? null;
@@ -33,20 +34,7 @@ function Header() {
 				data-testid="NetflixLogo"
 			/>
 
-			{isAuthenticated && profile ? (
-				<ProfileButton
-					label={profile.name}
-					onClick={() => {
-						// eslint-disable-next-line no-console
-						console.log('profile header clicked');
-					}}
-				>
-					<img
-						src={profile.photoURL}
-						className="object-cover"
-					/>
-				</ProfileButton>
-			) : null}
+			{isAuthenticated && profile ? <ProfileMenu profile={profile} /> : null}
 		</header>
 	);
 }

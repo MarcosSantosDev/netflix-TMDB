@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Input, Button, Label } from '@/components/ui';
-import * as Form from '@/components/ui/form';
+import * as Form from '@/components/ui/Form';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 

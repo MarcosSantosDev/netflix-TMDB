@@ -1,7 +1,7 @@
 import { SEO } from '@/components/app';
 import { Header } from '@/components/app';
 import { Button } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui/Checkbox';
 import SignInForm from '@/features/auth/components/SignInForm/SignInForm';
 import PublicLayout from '@/layouts/PublicLayout';
 
