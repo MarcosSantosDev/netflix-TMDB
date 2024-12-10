@@ -2,17 +2,28 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import { ReadProfile } from '@/@types/profile.types';
 import { Header } from '@/components/app';
 import { NewProfile, ProfileButton } from '@/features/profiles/components';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
+import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
 const ProfilesPage = () => {
 	const { data: user } = useGetUserByIdQuery();
+	const { setSelectedProfile } = useAuthenticatedUserStore();
 
 	const profiles = user?.profiles ?? [];
 
+	const handleSelectNetflixProfile = (profile: ReadProfile) => {
+		return () => {
+			setSelectedProfile({
+				profileId: profile.id,
+			});
+		};
+	};
+
 	return (
-		<div className="relative h-screen w-screen bg-black">
+		<div className="relative h-full w-full">
 			<Header />
 
 			<div
@@ -23,11 +34,11 @@ const ProfilesPage = () => {
 				<p className="text-h4 font-semibold text-white md:text-h2">Quem esta assistindo ?</p>
 				<div className="flex justify-center">
 					<div className="flex flex-wrap items-center justify-center gap-16 md:w-[565px] md:justify-start">
-						{profiles.map((profile) => (
+						{profiles.map((profile: ReadProfile) => (
 							<ProfileButton
 								key={profile.id}
 								label={profile.name}
-								onClick={() => {}}
+								onClick={handleSelectNetflixProfile(profile)}
 							>
 								<img
 									src={profile.photoURL}

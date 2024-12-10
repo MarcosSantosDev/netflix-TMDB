@@ -1,13 +1,25 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import * as React from 'react';
+
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { Suspense } from '@/components/app';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 import routePaths from '@/router/config/routePaths';
+import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
 const PrivateLayout = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const { isAuthenticated } = useAuth();
+
+	const { selectedProfileId } = useAuthenticatedUserStore();
+
+	React.useEffect(() => {
+		if (selectedProfileId.length) {
+			navigate(routePaths.HOME);
+		}
+	}, [selectedProfileId]);
 
 	if (!isAuthenticated) {
 		return (
@@ -28,7 +40,7 @@ const PrivateLayout = () => {
 	}
 
 	return (
-		<div className="flex h-screen w-screen overflow-hidden bg-black">
+		<div className="h-screen w-screen overflow-hidden bg-black">
 			<Suspense>
 				<Outlet />
 			</Suspense>

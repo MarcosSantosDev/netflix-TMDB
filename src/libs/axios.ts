@@ -1,19 +1,22 @@
 import axios, { AxiosError } from 'axios';
 
 import { ErrorResponse } from '@/@types/http.types';
-import { env } from '@/env';
-import localStorageUtils from '@/utils/localStorage';
 
 import { showErrorToast } from './react-toastify';
 
-const axiosInstance = () => {
+type AxiosCreateInstanceParams = {
+	baseURL: string;
+	getAccessToken: () => string | null;
+};
+
+export const axiosCreateInstance = ({ baseURL, getAccessToken }: AxiosCreateInstanceParams) => {
 	const axiosInstance = axios.create({
-		baseURL: env.VITE_API_URL,
+		baseURL,
 	});
 
 	axiosInstance.interceptors.request.use(
 		(config) => {
-			const token = localStorageUtils.getAccessToken();
+			const token = getAccessToken();
 			if (token) {
 				config.headers.Authorization = `Bearer ${token}`;
 			}
@@ -41,7 +44,3 @@ const axiosInstance = () => {
 
 	return axiosInstance;
 };
-
-const apiClient = axiosInstance();
-
-export { apiClient };

@@ -13,12 +13,10 @@ export const authHandlers = [
 			const userFound = userMethods.readUserByCredentials({ email, password });
 
 			if (userFound) {
-				const accessToken = generateJWTToken({});
-
 				return createSuccessResponse({
 					data: {
 						user: userFound,
-						access_token: accessToken,
+						access_token: generateJWTToken({}),
 					},
 					status: 200,
 				});
