@@ -142,6 +142,9 @@ export default {
 				100: '10rem',
 				120: '12rem',
 				160: '16rem',
+				160: '16rem',
+				200: '20rem',
+				240: '24rem',
 			},
 			borderRadius: {
 				xs: '2px',
