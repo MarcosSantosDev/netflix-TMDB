@@ -7,6 +7,7 @@ import { Icon } from '@/components/ui';
 import { Movie } from '@/features/home/services/@types/home.types';
 
 import MovieListItem from './MovieListItem';
+import MovieListItemSkeleton from './MovieListItemSkeleton';
 
 type ArrowIconProps = React.PropsWithChildren & {
 	direction: 'left' | 'right';
@@ -39,12 +40,16 @@ function ArrowIcon({ direction = 'left', onClick }: ArrowIconProps) {
 type MovieListProps = {
 	title: string;
 	movies: Movie[];
+	isLoadingMovies: boolean;
 };
 
-function MovieList({ title, movies }: MovieListProps) {
+const skeletonCount = 20;
+const skeletonList = Array.from(Array(skeletonCount)).map((_, index) => index + 1);
+
+function MovieList({ title = '', movies = [], isLoadingMovies = false }: MovieListProps) {
 	const [scrollX, setScrollX] = React.useState(-400);
 
-	const countMovies = movies.length;
+	const countMovies = isLoadingMovies ? skeletonCount : movies.length;
 	const widthList = countMovies * 160 + 40;
 
 	const handleClickLeftArrow = () => {
@@ -79,12 +84,14 @@ function MovieList({ title, movies }: MovieListProps) {
 				className="overflow-x-hidden px-20 transition-all duration-500"
 				style={{ width: widthList, marginLeft: scrollX }}
 			>
-				{movies.map((movie) => (
-					<MovieListItem
-						key={movie.id}
-						movie={movie}
-					/>
-				))}
+				{isLoadingMovies
+					? skeletonList.map((skeletonId) => <MovieListItemSkeleton key={skeletonId} />)
+					: movies.map((movie) => (
+							<MovieListItem
+								key={movie.id}
+								movie={movie}
+							/>
+						))}
 			</div>
 		</div>
 	);

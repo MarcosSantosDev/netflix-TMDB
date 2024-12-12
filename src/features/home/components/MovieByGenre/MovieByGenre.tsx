@@ -8,12 +8,13 @@ type MovieByGenreProps = {
 };
 
 function MovieByGenre({ genre }: MovieByGenreProps) {
-	const { data: movieByGenre } = useGetDiscoverMoviesByGenreIdQuery(genre.id);
+	const { data: movieByGenre, isLoading: isLoadingMoviesByGenre } = useGetDiscoverMoviesByGenreIdQuery(genre.id);
 
 	return (
 		<MovieList
 			title={genre.name}
 			movies={transformDiscoverByGenreResults(movieByGenre?.results ?? [])}
+			isLoadingMovies={isLoadingMoviesByGenre}
 		/>
 	);
 }

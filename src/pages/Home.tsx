@@ -13,9 +13,10 @@ import {
 
 const HomePage = () => {
 	const { data: genres } = useGetGenresQuery();
-	const { data: discoverTvNetflixOriginals } = useGetDiscoverNetflixOriginalsQuery();
-	const { data: trending } = useGetTrendingQuery();
-	const { data: movieListTopRated } = useGetMovieListTopRatedQuery();
+	const { data: discoverNetflixOriginals, isLoading: isLoadingDiscoverNetflixOriginals } =
+		useGetDiscoverNetflixOriginalsQuery();
+	const { data: trending, isLoading: isLoadingTrending } = useGetTrendingQuery();
+	const { data: movieListTopRated, isLoading: isLoadingMovieListTopRated } = useGetMovieListTopRatedQuery();
 
 	return (
 		<div className="relative h-full w-full overflow-y-auto overflow-x-hidden">
@@ -23,15 +24,18 @@ const HomePage = () => {
 			<div className="flex flex-col gap-16">
 				<MovieList
 					title="Originais Netflix"
-					movies={transformDiscoverResults(discoverTvNetflixOriginals?.results ?? [])}
+					movies={transformDiscoverResults(discoverNetflixOriginals?.results ?? [])}
+					isLoadingMovies={isLoadingDiscoverNetflixOriginals}
 				/>
 				<MovieList
 					title="Recomendados"
 					movies={transformTrendingResults(trending?.results ?? [])}
+					isLoadingMovies={isLoadingTrending}
 				/>
 				<MovieList
 					title="Em alta"
 					movies={transformMovieListTopRatedResults(movieListTopRated?.results ?? [])}
+					isLoadingMovies={isLoadingMovieListTopRated}
 				/>
 
 				{genres?.genres.map((genre) => (

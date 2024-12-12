@@ -10,7 +10,7 @@ import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 import { ProfileMenu } from './ProfileMenu';
 
 function Header() {
-	const { data: user } = useGetUserByIdQuery();
+	const { data: user } = useGetUserByIdQuery({ autoRefetch: false });
 
 	const { isAuthenticated, selectedProfileId } = useAuthenticatedUserStore();
 

@@ -12,21 +12,19 @@ export const useAuth = () => {
 	const signIn = async (credentials: AuthSignInPayload) => {
 		try {
 			const response = await authSignInUserMutation.mutateAsync(credentials);
-
-			localStorageUtils.setAccessToken(response.data.access_token);
-
 			authenticatedUserStore.setLoggedUser({ userId: response.data.user.id });
+			localStorageUtils.setAccessToken(response.data.access_token);
 		} catch {
-			localStorageUtils.resetAccessToken();
-
 			authenticatedUserStore.resetLoggedUser();
+			localStorageUtils.resetAccessToken();
 		}
 	};
 
 	const logout = () => {
-		queryClient.invalidateQueries({ queryKey: [GET_USER_BY_ID_QUERY_KEY] });
+		queryClient.removeQueries({ queryKey: [GET_USER_BY_ID_QUERY_KEY] });
 		authenticatedUserStore.resetSelectedProfile();
 		authenticatedUserStore.resetLoggedUser();
+		localStorageUtils.resetAccessToken();
 	};
 
 	return {

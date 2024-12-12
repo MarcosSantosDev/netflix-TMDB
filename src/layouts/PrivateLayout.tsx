@@ -4,6 +4,7 @@ import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { Suspense } from '@/components/app';
 import { useAuth } from '@/features/auth/hooks/useAuth';
+import { queryClient } from '@/libs/react-query';
 import routePaths from '@/router/config/routePaths';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
@@ -20,6 +21,12 @@ const PrivateLayout = () => {
 			navigate(routePaths.HOME);
 		}
 	}, [selectedProfileId]);
+
+	React.useEffect(() => {
+		return () => {
+			queryClient.clear();
+		};
+	}, []);
 
 	if (!isAuthenticated) {
 		return (

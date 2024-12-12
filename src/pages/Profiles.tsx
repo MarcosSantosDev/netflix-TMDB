@@ -9,7 +9,7 @@ import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery'
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
 const ProfilesPage = () => {
-	const { data: user } = useGetUserByIdQuery();
+	const { data: user } = useGetUserByIdQuery({ autoRefetch: true });
 	const { setSelectedProfile } = useAuthenticatedUserStore();
 
 	const profiles = user?.profiles ?? [];
