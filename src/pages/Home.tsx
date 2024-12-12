@@ -20,7 +20,7 @@ const HomePage = () => {
 
 	return (
 		<div className="relative h-full w-full overflow-y-auto overflow-x-hidden">
-			<Header />
+			<Header className="sticky top-0 z-50 bg-black/95" />
 			<div className="flex flex-col gap-16">
 				<MovieList
 					title="Originais Netflix"

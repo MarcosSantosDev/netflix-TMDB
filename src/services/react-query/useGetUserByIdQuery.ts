@@ -7,12 +7,8 @@ export const GET_USER_BY_ID_QUERY_KEY = 'getUserById';
 
 export type UseGetUserByIdQueryKey = [typeof GET_USER_BY_ID_QUERY_KEY, id: string];
 
-type UseGetUserByIdQueryParams = {
-	autoRefetch: boolean;
-};
-
-export const useGetUserByIdQuery = ({ autoRefetch }: UseGetUserByIdQueryParams) => {
-	const { userId } = useAuthenticatedUserStore();
+export const useGetUserByIdQuery = () => {
+	const { isAuthenticated, userId } = useAuthenticatedUserStore();
 
 	return useQuery(
 		queryOptions({
@@ -22,7 +18,7 @@ export const useGetUserByIdQuery = ({ autoRefetch }: UseGetUserByIdQueryParams) 
 				return data.data;
 			},
 			staleTime: Infinity,
-			enabled: !!autoRefetch,
+			enabled: isAuthenticated,
 		})
 	);
 };

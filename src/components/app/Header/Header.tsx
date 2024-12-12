@@ -9,10 +9,13 @@ import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
 import { ProfileMenu } from './ProfileMenu';
 
-function Header() {
-	const { data: user } = useGetUserByIdQuery({ autoRefetch: false });
+type HeaderProps = {
+	className?: HTMLDivElement['className'];
+};
 
+function Header({ className = '' }: HeaderProps) {
 	const { isAuthenticated, selectedProfileId } = useAuthenticatedUserStore();
+	const { data: user } = useGetUserByIdQuery();
 
 	const profile = React.useMemo((): ReadProfile | null => {
 		const profiles = user?.profiles ?? [];
@@ -24,7 +27,7 @@ function Header() {
 
 	return (
 		<header
-			className={clsx('flex h-full max-h-header w-full items-center px-20 md:px-24 xl:px-120', {
+			className={clsx(className, 'flex h-full max-h-header w-full items-center px-20 md:px-24 xl:px-120', {
 				'justify-start': profile === null,
 				'justify-between': profile !== null,
 			})}
