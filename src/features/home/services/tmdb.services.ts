@@ -9,6 +9,7 @@ import {
 	DiscoverByGenre,
 	TMDBGenreResponse,
 	Genre,
+	TVInfo,
 } from './@types/tmdb.types';
 
 const homeService = {
@@ -37,7 +38,7 @@ const homeService = {
 				language: 'pt-BR',
 			},
 		]);
-		const response = await tmdbHttpClient.get<TMDBResponse<Discover>>(`/tv/${seriesId}${query}`);
+		const response = await tmdbHttpClient.get<TVInfo>(`/tv/${seriesId}${query}`);
 		return response.data;
 	},
 	getDiscoverMoviesByGenreId: async (genreId: number) => {

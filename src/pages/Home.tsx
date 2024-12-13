@@ -1,5 +1,9 @@
+import * as React from 'react';
+
 import { Header } from '@/components/app';
+import Loading from '@/components/app/Loading/Loading';
 import MovieByGenre from '@/features/home/components/MovieByGenre/MovieByGenre';
+import MovieHighlightPanel from '@/features/home/components/MovieHighlightPanel/MovieHighlightPanel';
 import MovieList from '@/features/home/components/MovieList/MovieList';
 import { useGetDiscoverNetflixOriginalsQuery } from '@/features/home/services/react-query/useGetDiscoverNetflixOriginalsQuery';
 import { useGetGenresQuery } from '@/features/home/services/react-query/useGetGenresQuery';
@@ -10,6 +14,7 @@ import {
 	transformTrendingResults,
 	transformMovieListTopRatedResults,
 } from '@/features/home/utils/tmdb.utils';
+import { generateRandomBetween } from '@/utils/number';
 
 const HomePage = () => {
 	const { data: genres } = useGetGenresQuery();
@@ -18,13 +23,24 @@ const HomePage = () => {
 	const { data: trending, isLoading: isLoadingTrending } = useGetTrendingQuery();
 	const { data: movieListTopRated, isLoading: isLoadingMovieListTopRated } = useGetMovieListTopRatedQuery();
 
+	const netflixOriginals = transformDiscoverResults(discoverNetflixOriginals?.results ?? []);
+
+	const chosenMovie = React.useMemo(() => {
+		if (netflixOriginals.length) {
+			const chosenIndex = generateRandomBetween(1, netflixOriginals.length);
+			return netflixOriginals[chosenIndex - 1];
+		}
+		return null;
+	}, [netflixOriginals]);
+
 	return (
 		<div className="relative h-full w-full overflow-y-auto overflow-x-hidden">
-			<Header className="sticky top-0 z-50 bg-black/95" />
-			<div className="flex flex-col gap-16">
+			<Header className="fixed top-0 z-50" />
+			{chosenMovie ? <MovieHighlightPanel movie={chosenMovie} /> : <Loading />}
+			<div className="-mt-200 flex flex-col gap-16">
 				<MovieList
 					title="Originais Netflix"
-					movies={transformDiscoverResults(discoverNetflixOriginals?.results ?? [])}
+					movies={netflixOriginals}
 					isLoadingMovies={isLoadingDiscoverNetflixOriginals}
 				/>
 				<MovieList

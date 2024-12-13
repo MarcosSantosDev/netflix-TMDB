@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { ReadProfile } from '@/@types/profile.types';
 import NetflixLogo from '@/components/app/SVG/NetflixLogo';
+import { Icon } from '@/components/ui';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
@@ -27,17 +28,43 @@ function Header({ className = '' }: HeaderProps) {
 
 	return (
 		<header
-			className={clsx(className, 'flex h-full max-h-header w-full items-center px-20 md:px-24 xl:px-120', {
-				'justify-start': profile === null,
-				'justify-between': profile !== null,
-			})}
+			className={clsx(
+				className,
+				'bg-gradient-to-t-header flex h-full max-h-header w-full items-center px-20 md:px-24 xl:px-120',
+				{
+					'justify-start': profile === null,
+					'justify-between': profile !== null,
+				}
+			)}
 		>
-			<NetflixLogo
-				className="h-24 fill-red md:h-32"
-				data-testid="NetflixLogo"
-			/>
+			<div className="flex gap-28">
+				<NetflixLogo
+					className="h-24 fill-red md:h-32"
+					data-testid="NetflixLogo"
+				/>
 
-			{isAuthenticated && profile ? <ProfileMenu profile={profile} /> : null}
+				<nav className="flex h-24 items-center gap-24">
+					<span className="text-md font-bold text-neutral-1">Inicio</span>
+					<span className="text-md text-neutral-1">Tv Shows</span>
+					<span className="text-md text-neutral-1">Filmes</span>
+					<span className="text-md text-neutral-1">Em alta</span>
+					<span className="text-md text-neutral-1">Minha Lista</span>
+				</nav>
+			</div>
+
+			{isAuthenticated && profile ? (
+				<div className="flex items-center gap-24 text-neutral-1">
+					<Icon
+						name="search"
+						size="lg"
+					/>
+					<Icon
+						name="bell"
+						size="lg"
+					/>
+					<ProfileMenu profile={profile} />
+				</div>
+			) : null}
 		</header>
 	);
 }

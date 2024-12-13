@@ -180,6 +180,9 @@ export default {
 			},
 			backgroundImage: {
 				'netflix-thumb': "url('/assets/images/backgrounds/thumb.jpg')",
+				'gradient-to-t-header': 'linear-gradient(to top, transparent 5%, #111  95%)',
+				'gradient-to-t-highlight': 'linear-gradient(to top, #111 10%, transparent 90%)',
+				'gradient-to-r-highlight': 'linear-gradient(to right, #111 30%, transparent 70%)',
 			},
 			keyframes: {
 				pulse: {

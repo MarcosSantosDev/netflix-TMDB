@@ -15,7 +15,8 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				primary: 'bg-red text-neutral-1 shadow hover:bg-red/90',
-				secondary: 'bg-neutral-800 text-neutral-50 shadow hover:bg-neutral-900/90',
+				secondary: 'bg-neutral-600 text-neutral-50 shadow hover:bg-neutral-900/90',
+				tertiary: 'bg-neutral-1 text-black shadow hover:bg-neutral-100',
 				link: 'text-neutral-50 underline-offset-4 hover:underline',
 			},
 			size: {
