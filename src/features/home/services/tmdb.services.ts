@@ -31,6 +31,15 @@ const homeService = {
 		const response = await tmdbHttpClient.get<TMDBResponse<Discover>>(`/discover/tv${query}`);
 		return response.data;
 	},
+	getTvInfo: async (seriesId: number) => {
+		const query = generateQueryParams([
+			{
+				language: 'pt-BR',
+			},
+		]);
+		const response = await tmdbHttpClient.get<TMDBResponse<Discover>>(`/tv/${seriesId}${query}`);
+		return response.data;
+	},
 	getDiscoverMoviesByGenreId: async (genreId: number) => {
 		const query = generateQueryParams([
 			{

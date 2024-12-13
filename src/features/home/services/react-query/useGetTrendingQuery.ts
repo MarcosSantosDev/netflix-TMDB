@@ -1,22 +1,19 @@
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
+import tmdbService from '@/features/home/services/tmdb.services';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
-
-import homeService from '../home.services';
 
 export const GET_TRENDING_QUERY_KEY = 'getTrending';
 
-export type UseGetTrendingQueryKey = [typeof GET_TRENDING_QUERY_KEY, id: string];
+export type UseGetTrendingQueryKey = [typeof GET_TRENDING_QUERY_KEY];
 
 export const useGetTrendingQuery = () => {
 	const { isAuthenticated } = useAuthenticatedUserStore();
 
-	return useQuery(
-		queryOptions({
-			queryKey: [GET_TRENDING_QUERY_KEY],
-			queryFn: homeService.getTrending,
-			staleTime: Infinity,
-			enabled: isAuthenticated,
-		})
-	);
+	return useQuery({
+		queryKey: [GET_TRENDING_QUERY_KEY] as UseGetTrendingQueryKey,
+		queryFn: tmdbService.getTrending,
+		staleTime: Infinity,
+		enabled: isAuthenticated,
+	});
 };

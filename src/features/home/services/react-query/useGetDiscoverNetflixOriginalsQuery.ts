@@ -1,22 +1,19 @@
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
+import tmdbService from '@/features/home/services/tmdb.services';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
-
-import homeService from '../home.services';
 
 export const GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY = 'getDiscoverNetflixOriginals';
 
-export type UseGetDiscoverNetflixOriginalsQueryKey = [typeof GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY, id: string];
+export type UseGetDiscoverNetflixOriginalsQueryKey = [typeof GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY];
 
 export const useGetDiscoverNetflixOriginalsQuery = () => {
 	const { isAuthenticated } = useAuthenticatedUserStore();
 
-	return useQuery(
-		queryOptions({
-			queryKey: [GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY],
-			queryFn: homeService.getDiscoverNetflixOriginals,
-			staleTime: Infinity,
-			enabled: isAuthenticated,
-		})
-	);
+	return useQuery({
+		queryKey: [GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY] as UseGetDiscoverNetflixOriginalsQueryKey,
+		queryFn: tmdbService.getDiscoverNetflixOriginals,
+		staleTime: Infinity,
+		enabled: isAuthenticated,
+	});
 };
