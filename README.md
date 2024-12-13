@@ -1,4 +1,4 @@
-### Netflix-TMDB
+## Netflix-TMDB
 
 This project was developed as a personal challenge to test and improve my React skills. Inspired by Netflix's interface, the goal was to recreate its aesthetics and functionality while integrating the TMDB (The Movie Database) API to fetch and display real movie data.
 
