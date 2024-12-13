@@ -1,49 +1,16 @@
-# React Boilerplate: High-Performance, Scalable Applications
+### Netflix Clone
 
-This boilerplate is designed for developers who need to quickly set up a scalable and high-performance React application. It integrates modern tools, aiming to provide an optimized and efficient development environment right out of the box.
+This project was developed as a personal challenge to test and improve my React skills. Inspired by Netflix's interface, the goal was to recreate its aesthetics and functionality while integrating the TMDB (The Movie Database) API to fetch and display real movie data.
 
-## Project Structure (main files)
+#### Key Features:
+- **Dynamic Movie Lists:** Displays movies organized by categories such as trending, top-rated, and specific genres, powered by the TMDB API.
+- **Interactive UI:** A clean, responsive, and visually appealing design inspired by Netflix's user experience.
+- **Scalable Codebase:** Well-structured architecture, following best practices for code organization and performance optimization.
 
-```markdown
-📦 template-react-tailwind-css/
-├── 📂 .husky/
-├── 📂 .vscode/
-├── 📂 docs/ /* File with project documentation */
-├── 📂 public/
-│ ├── 📂 assets/
-│ │ ├── 📂 images/
-│ ├── 📄 mockServiceWorker.js
-├── 📂 src/
-│ ├── 📂 @types/
-│ ├── 📂 components/
-│ │ ├── 📂 app/ /* Global components used by the application once */
-│ │ ├── 📂 ui/ /* Global components used by the entire application */
-│ ├── 📂 constants/ /* Global application constants */
-│ ├── 📂 features/ /* Each “feature”, such as auth, has a small “src” inside it, for the "feature" created */
-│ │ ├── 📂 auth/
-│ │ │ ├── 📂 components/
-│ │ │ ├── 📂 hooks/
-│ │ │ ├── 📂 services/
-│ │ │ ├── 📂 types/
-│ ├── 📂 HOC/
-│ ├── 📂 hooks/ /* Global application hooks */
-│ ├── 📂 layouts/ /* Application layouts */
-│ ├── 📂 libs/ /* Library configurations */
-│ ├── 📂 styles/ /* Global application styles */
-│ ├── 📂 utils/ /* Global application utilities */
-│ ├── 📂 pages/
-│ │ ├── 📄 SignIn.tsx
-│ ├── 📂 router/
-│ │ ├── 📄 index.ts /* Routes supplier */
-│ │ ├── 📂 config
-│ │ │ ├── 📄 route.types.ts /* Route types */
-│ │ │ ├── 📄 routePaths.ts /* Route paths */
-│ │ │ ├── 📄 app.routes.ts /* Personalized routes with icons and titles */
-│ │ │ ├── 📄 routes.ts /* Application routes */
-│ │ │ ├── 📄 routesNavigationToConfig.ts /* Method that undoes customized routes */
-│ ├── 📄 env.ts /* Type-validated environment variables */
-│ ├── 📄 main.ts
-```
+This project serves as a practical demonstration of modern front-end development techniques and the creation of interfaces that combine usability with professional design.
+
+![Captura de tela 2024-12-12 234703](https://github.com/user-attachments/assets/8ff1e662-ec40-43a3-b07a-a88917baae48)
+
 
 ## Node.js Version
 
@@ -87,28 +54,6 @@ The project leverages the following technologies:
 - [ESLint](https://eslint.org/): A static code analysis tool to identify problematic patterns.
 - [Prettier](https://prettier.io/): An opinionated code formatter for consistent code style.
 - [Lucide React](https://lucide.dev/): A collection of beautiful & consistent open-source icons for React.
-
-
-
-## 🤝 Contributing
-
-Contributions are welcome! To get started:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-     git checkout -b <branch_name>
-   ```
-3. Make your changes and commit:
-   ```bash
-     git checkout -b <branch_name>
-   ```
-4. Push the changes:
-   ```bash
-     git checkout -b <branch_name>
-   ```
-5. Open a pull request.
-  For more detailed instructions, check the [GitHub guide on pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## :page_facing_up: License
 
