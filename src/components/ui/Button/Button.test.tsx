@@ -24,7 +24,14 @@ describe('Button Component', () => {
 		render(<Button variant="secondary">Click Me</Button>);
 
 		const button = screen.getByRole('button', { name: /click me/i });
-		expect(button).toHaveClass('bg-neutral-800 text-neutral-50 shadow hover:bg-neutral-900/90');
+		expect(button).toHaveClass('bg-neutral-600 text-neutral-50 shadow hover:bg-neutral-900/90');
+	});
+
+	it('should render the button by variant tertiary classes', () => {
+		render(<Button variant="tertiary">Click Me</Button>);
+
+		const button = screen.getByRole('button', { name: /click me/i });
+		expect(button).toHaveClass('bg-neutral-1 text-black shadow hover:bg-neutral-100');
 	});
 
 	it('should render the button by variant link classes', () => {
