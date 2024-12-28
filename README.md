@@ -9,10 +9,13 @@ This project was developed as a personal challenge to test and improve my React 
 
 This project serves as a practical demonstration of modern front-end development techniques and the creation of interfaces that combine usability with professional design.
 
-![Captura de tela 2024-12-12 234703](https://github.com/user-attachments/assets/8ff1e662-ec40-43a3-b07a-a88917baae48)
+| ![Captura de tela de 2024-12-26 19-56-49](https://github.com/user-attachments/assets/4e2e847a-21ff-4e07-93b5-514aa3dc7288) | ![Captura de tela de 2024-12-26 19-55-02](https://github.com/user-attachments/assets/f975b748-a48f-4a32-bc1d-bc837fc0dd26) |
+|----------------------------------------------|----------------------------------------------|
+| Desktop                        | Mobile                        |
 
 
 ## Node.js Version
+
 
 This project is compatible with Node.js versions `>= 20.0.0`. While it may work with older versions, it's recommended to use the latest LTS (Long Term Support) version for optimal performance and compatibility.
 
