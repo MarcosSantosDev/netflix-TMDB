@@ -131,10 +131,12 @@ export default {
 				// They are perfect for standard spacing on elements such as buttons, cards, etc.
 				20: '2rem',
 				24: '2.4rem',
+				28: '2.8rem',
 				32: '3.2rem',
 				40: '4rem',
 				48: '4.8rem',
 				52: '5.2rem',
+				60: '6rem',
 				// For larger layouts, spacing between sections and grids.
 				64: '6.4rem',
 				80: '8rem',

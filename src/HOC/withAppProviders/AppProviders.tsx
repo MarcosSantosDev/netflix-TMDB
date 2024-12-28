@@ -5,7 +5,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { ErrorBoundary, Suspense } from '@/components/app';
+import { ErrorBoundary } from '@/components/app/ErrorBoundary/ErrorBoundary';
+import { Suspense } from '@/components/app/Suspense/Suspense';
 import { queryClient } from '@/libs/react-query';
 
 const AppProviders = ({ children }: React.PropsWithChildren) => {

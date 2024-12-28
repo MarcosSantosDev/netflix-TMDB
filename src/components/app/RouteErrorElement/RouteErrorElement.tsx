@@ -4,9 +4,9 @@ import routePaths from '@/router/config/routePaths';
 
 import RouteErrorElementFallback from './RouteErrorElementFallback';
 
-const notFoundMessage = "Sorry, we couldn't find the page you tried to access";
+const notFoundMessage = 'Desculpe, não foi possível encontrar a página que você tentou acessar';
 
-const RouteErrorElement = () => {
+export const RouteErrorElement = () => {
 	const navigate = useNavigate();
 	const error = useRouteError();
 
@@ -29,5 +29,3 @@ const RouteErrorElement = () => {
 
 	throw error;
 };
-
-export default RouteErrorElement;

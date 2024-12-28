@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { Suspense } from '@/components/app';
+import { Suspense } from '@/components/app/Suspense/Suspense';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 import { queryClient } from '@/libs/react-query';
 import routePaths from '@/router/config/routePaths';

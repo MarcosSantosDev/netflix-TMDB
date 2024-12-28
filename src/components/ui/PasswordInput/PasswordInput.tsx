@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Icon, InputBase } from '../';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { InputBase } from '@/components/ui/Input/Input';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
 

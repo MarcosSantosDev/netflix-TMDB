@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui/Button/Button';
 
 type RouteErrorElementFallbackProps = {
 	title: string;
@@ -27,7 +27,7 @@ const RouteErrorElementFallback = ({ title, subtitle, onBackToTop }: RouteErrorE
 					variant="secondary"
 					icon="move-left"
 				>
-					Back to top
+					Voltar ao início
 				</Button>
 			</div>
 		</div>

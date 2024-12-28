@@ -1,40 +1,33 @@
-import { SEO } from '@/components/app';
-import { Header } from '@/components/app';
-import { Button } from '@/components/ui';
+import { Header } from '@/components/app/Header/Header';
+import { SEO } from '@/components/app/SEO/SEO';
+import { Button } from '@/components/ui/Button/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
 import SignInForm from '@/features/auth/components/SignInForm/SignInForm';
 import PublicLayout from '@/layouts/PublicLayout';
 
 const SignInPage = () => {
 	const onLoginWithAccessCode = () => {
-		// Lógica de login com Google
+		// Login With Access Code
 	};
 
 	return (
 		<PublicLayout>
 			<SEO
 				resource={{
-					title: 'Netflix | Acesse Sua Conta Agora',
-					shortDescription:
-						'Acesse sua conta na Netflix e aproveite todos os nossos recursos exclusivos. Faça login de forma rápida e segura para continuar explorando.',
+					title: 'Netflix',
+					shortDescription: 'Acesse sua conta na Netflix',
 				}}
 			/>
 
 			<div className="relative h-screen w-screen">
 				<div className="absolute -z-10 hidden min-h-screen w-full overflow-hidden bg-netflix-thumb bg-cover bg-no-repeat md:block" />
-				<div className="h-full w-full bg-black md:bg-backdrop">
-					<Header />
-					<div className="m-20 h-auto max-h-[600px] max-w-full space-y-20 self-end rounded-sm bg-black/80 md:mx-auto md:my-28 md:max-w-[450px] md:p-48">
-						<div className="grid grid-cols-1 gap-10">
-							<h2 className="text-nowrap text-xxl font-bold text-neutral-1">Entrar</h2>
-						</div>
-						<div>
-							<SignInForm />
-						</div>
-						<div className="flex flex-col gap-8">
-							<div className="flex items-center justify-around gap-2">
-								<span className="mx-4 whitespace-nowrap text-md text-neutral-300">OU</span>
-							</div>
+				<div className="flex h-full w-full bg-black md:bg-backdrop">
+					<Header className="absolute left-0 right-0 top-0" />
+					<div className="h-auto w-full space-y-20 overflow-y-auto rounded-sm p-20 pt-80 md:m-auto md:max-w-[450px] md:bg-black/80 md:p-20">
+						<h2 className="text-nowrap text-xl font-bold text-neutral-1 md:text-xxl">Entrar</h2>
+						<SignInForm />
+						<div className="flex flex-col gap-6">
+							<span className="mx-4 whitespace-nowrap text-center text-md text-neutral-300">OU</span>
 							<Button
 								variant="secondary"
 								onClick={onLoginWithAccessCode}

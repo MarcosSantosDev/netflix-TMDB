@@ -7,7 +7,7 @@ type SEOProps = {
 	};
 };
 
-const SEO = ({ resource }: SEOProps) => {
+export const SEO = ({ resource }: SEOProps) => {
 	return (
 		<Helmet>
 			<title>{resource.title}</title>
@@ -43,5 +43,3 @@ const SEO = ({ resource }: SEOProps) => {
 		</Helmet>
 	);
 };
-
-export default SEO;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Header } from '@/components/app';
-import Loading from '@/components/app/Loading/Loading';
+import { Header } from '@/components/app/Header/Header';
+import { SEO } from '@/components/app/SEO/SEO';
 import MovieByGenre from '@/features/home/components/MovieByGenre/MovieByGenre';
 import MovieHighlightPanel from '@/features/home/components/MovieHighlightPanel/MovieHighlightPanel';
 import MovieList from '@/features/home/components/MovieList/MovieList';
@@ -35,9 +35,15 @@ const HomePage = () => {
 
 	return (
 		<div className="relative h-full w-full overflow-y-auto overflow-x-hidden">
+			<SEO
+				resource={{
+					title: 'Netflix',
+					shortDescription: 'Assista seus filmes e séries',
+				}}
+			/>
 			<Header className="fixed top-0 z-50" />
-			{chosenMovie ? <MovieHighlightPanel movie={chosenMovie} /> : <Loading />}
-			<div className="-mt-200 flex flex-col gap-16">
+			{chosenMovie ? <MovieHighlightPanel movie={chosenMovie} /> : null}
+			<div className="-mt-120 flex flex-col gap-16 md:-mt-160">
 				<MovieList
 					title="Originais Netflix"
 					movies={netflixOriginals}

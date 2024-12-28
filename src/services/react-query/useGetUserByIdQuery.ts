@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import userService from '@/services/user.services';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
@@ -10,15 +10,13 @@ export type UseGetUserByIdQueryKey = [typeof GET_USER_BY_ID_QUERY_KEY, id: strin
 export const useGetUserByIdQuery = () => {
 	const { isAuthenticated, userId } = useAuthenticatedUserStore();
 
-	return useQuery(
-		queryOptions({
-			queryKey: [GET_USER_BY_ID_QUERY_KEY, userId],
-			queryFn: () => userService.getUserById(userId),
-			select: (data) => {
-				return data.data;
-			},
-			staleTime: Infinity,
-			enabled: isAuthenticated,
-		})
-	);
+	return useQuery({
+		queryKey: [GET_USER_BY_ID_QUERY_KEY, userId],
+		queryFn: () => userService.getUserById(userId),
+		select: (data) => {
+			return data.data;
+		},
+		staleTime: Infinity,
+		enabled: isAuthenticated,
+	});
 };

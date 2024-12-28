@@ -16,7 +16,7 @@ const buttonVariants = cva('flex items-center rounded-sm p-12', {
 			confirm: 'bg-primary-500 text-neutral-50 hover:bg-primary-500/80',
 			alert: 'bg-warning-400 text-neutral-50 hover:bg-warning-400/80',
 			destructive: 'bg-red-500 text-neutral-50 hover:bg-red-500/80',
-			ghost: 'text-neutral-500 hover:border-neutral-200/80 hover:text-neutral-400/80',
+			ghost: 'text-neutral-1 hover:border-neutral-200/80 hover:text-neutral-400/80',
 		},
 		size: {
 			sm: 'p-8',

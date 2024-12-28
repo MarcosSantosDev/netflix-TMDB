@@ -3,7 +3,8 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import { ReadProfile } from '@/@types/profile.types';
-import { Header } from '@/components/app';
+import { Header } from '@/components/app/Header/Header';
+import { SEO } from '@/components/app/SEO/SEO';
 import { NewProfile, ProfileButton } from '@/features/profiles/components';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
@@ -24,6 +25,12 @@ const ProfilesPage = () => {
 
 	return (
 		<div className="relative h-full w-full">
+			<SEO
+				resource={{
+					title: 'Netflix',
+					shortDescription: 'Escolha seu perfil',
+				}}
+			/>
 			<Header />
 
 			<div

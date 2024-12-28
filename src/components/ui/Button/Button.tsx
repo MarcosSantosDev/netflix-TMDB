@@ -4,10 +4,9 @@ import { Slot } from '@radix-ui/react-slot';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import { Icon } from '@/components/ui/Icon/Icon';
+import type { IconNames } from '@/components/ui/Icon/Icon';
 import { cn } from '@/utils/twUtils';
-
-import { Icon } from '../Icon/Icon';
-import type { IconNames } from '../Icon/Icon';
 
 const buttonVariants = cva(
 	'inline-flex items-center justify-center gap-8 whitespace-nowrap rounded-sm text-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-100 disabled:pointer-events-none disabled:opacity-50',
@@ -20,8 +19,8 @@ const buttonVariants = cva(
 				link: 'text-neutral-50 underline-offset-4 hover:underline',
 			},
 			size: {
-				md: 'h-40 px-3',
-				lg: 'h-48 px-8',
+				md: 'h-32 md:h-40 px-3',
+				lg: 'h-40 md:h-48 px-8',
 			},
 		},
 		defaultVariants: {
@@ -68,6 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		);
 	}
 );
+
 Button.displayName = 'Button';
 
 export { Button, buttonVariants };

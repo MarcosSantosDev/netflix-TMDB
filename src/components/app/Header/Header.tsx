@@ -4,17 +4,19 @@ import clsx from 'clsx';
 
 import { ReadProfile } from '@/@types/profile.types';
 import NetflixLogo from '@/components/app/SVG/NetflixLogo';
-import { Icon } from '@/components/ui';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { IconButton } from '@/components/ui/IconButton/IconButton';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
+import { Nav } from './Nav';
 import { ProfileMenu } from './ProfileMenu';
 
 type HeaderProps = {
-	className?: HTMLDivElement['className'];
+	className?: string;
 };
 
-function Header({ className = '' }: HeaderProps) {
+export function Header({ className = '' }: HeaderProps) {
 	const { isAuthenticated, selectedProfileId } = useAuthenticatedUserStore();
 	const { data: user } = useGetUserByIdQuery();
 
@@ -26,47 +28,39 @@ function Header({ className = '' }: HeaderProps) {
 		return null;
 	}, [user, selectedProfileId]);
 
+	const hasProfile = profile !== null;
+
 	return (
 		<header
+			data-testid="Header"
 			className={clsx(
 				className,
-				'bg-gradient-to-t-header flex h-full max-h-header w-full items-center px-20 md:px-24 xl:px-120',
-				{
-					'justify-start': profile === null,
-					'justify-between': profile !== null,
-				}
+				'grid grid-cols-[auto_1fr_auto] items-center justify-center gap-8',
+				'h-full max-h-header w-full bg-gradient-to-t-header px-20'
 			)}
 		>
-			<div className="flex gap-28">
+			<div className="order-1 flex h-full w-full items-center justify-center md:order-2">
+				{isAuthenticated && hasProfile && <Nav />}
+			</div>
+			<div className="order-2 flex justify-center md:order-1">
 				<NetflixLogo
-					className="h-24 fill-red md:h-32"
+					className="h-20 fill-red md:h-28"
 					data-testid="NetflixLogo"
 				/>
-
-				<nav className="flex h-24 items-center gap-24">
-					<span className="text-md font-bold text-neutral-1">Inicio</span>
-					<span className="text-md text-neutral-1">Tv Shows</span>
-					<span className="text-md text-neutral-1">Filmes</span>
-					<span className="text-md text-neutral-1">Em alta</span>
-					<span className="text-md text-neutral-1">Minha Lista</span>
-				</nav>
 			</div>
-
-			{isAuthenticated && profile ? (
-				<div className="flex items-center gap-24 text-neutral-1">
-					<Icon
-						name="search"
-						size="lg"
-					/>
-					<Icon
-						name="bell"
-						size="lg"
-					/>
-					<ProfileMenu profile={profile} />
-				</div>
-			) : null}
+			<div className="order-3 flex justify-center">
+				{isAuthenticated && hasProfile && (
+					<div className="flex items-center justify-center gap-8 text-neutral-1">
+						<IconButton variant="ghost">
+							<Icon
+								name="search"
+								size="lg"
+							/>
+						</IconButton>
+						<ProfileMenu profile={profile} />
+					</div>
+				)}
+			</div>
 		</header>
 	);
 }
-
-export default Header;

@@ -1,44 +1,125 @@
-import { PropsWithChildren } from 'react';
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
-import Header from './Header';
+import { queryClient } from '@/libs/react-query';
+import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
+import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			retry: false,
-		},
-	},
-});
+import { Header } from './Header';
 
-const wrapper = ({ children }: PropsWithChildren) => (
-	<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-);
-
-const renderWithWrappers = (ui: React.ReactNode) => {
-	return render(ui, { wrapper });
+const renderWithQueryClient = (ui: React.ReactNode) => {
+	return render(ui, {
+		wrapper: ({ children }) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
+	});
 };
 
-describe('Header Component', () => {
-	it('should render the header element', () => {
-		renderWithWrappers(<Header />);
-		const headerElement = screen.getByRole('banner');
-		expect(headerElement).toBeInTheDocument();
+vi.mock('react-router-dom', () => ({
+	useNavigate: vi.fn(),
+}));
+
+vi.mock('@/store/useAuthenticatedUserStore', () => {
+	return {
+		useAuthenticatedUserStore: vi.fn(() => ({
+			userId: '',
+			isAuthenticated: false,
+			selectedProfileId: '',
+		})),
+	};
+});
+
+vi.mock('@/services/react-query/useGetUserByIdQuery', () => {
+	return {
+		useGetUserByIdQuery: vi.fn(() => ({
+			data: null,
+		})),
+	};
+});
+
+describe('Header component', () => {
+	beforeEach(() => {
+		vi.restoreAllMocks();
 	});
 
-	it('should render the NetflixLogo with correct classes', () => {
-		renderWithWrappers(<Header />);
-		const svgElement = screen.getByTestId('NetflixLogo');
-		expect(svgElement).toHaveClass('h-24 fill-red md:h-32');
+	it('renders NetflixLogo always', () => {
+		renderWithQueryClient(<Header />);
+
+		expect(screen.getByTestId('NetflixLogo')).toBeInTheDocument();
 	});
 
-	it('should have correct header classes', () => {
-		renderWithWrappers(<Header />);
-		const headerElement = screen.getByRole('banner');
-		expect(headerElement).toHaveClass(
-			'flex h-full max-h-header w-full items-center justify-start px-20 md:px-24 xl:px-120'
-		);
+	it('renders with appropriate styles based on profile state', () => {
+		const { container } = renderWithQueryClient(<Header className="custom-class" />);
+		const header = container.querySelector('header');
+
+		expect(header).toHaveClass('custom-class');
+	});
+
+	it('shows Nav and ProfileMenu when authenticated and profile exists', () => {
+		vi.mocked(useAuthenticatedUserStore, { partial: true }).mockReturnValue({
+			userId: 'a139ef00-4e67-46e9-91c4-42e3f41f3661',
+			isAuthenticated: true,
+			selectedProfileId: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
+		});
+		vi.mocked(useGetUserByIdQuery, { partial: true }).mockReturnValue({
+			data: {
+				id: 'a139ef00-4e67-46e9-91c4-42e3f41f3661',
+				email: 'marcos@example.com',
+				displayName: 'Marcos Santos',
+				profiles: [
+					{
+						id: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
+						name: 'Marcos Santos',
+						photoURL: '/assets/images/app/profiles/red.png',
+					},
+				],
+			},
+		});
+		renderWithQueryClient(<Header />);
+
+		expect(screen.getByTestId('Nav')).toBeInTheDocument();
+		expect(screen.getByTestId('ProfileMenuButton')).toBeInTheDocument();
+	});
+
+	it('does not show Nav and ProfileMenu when no profile exists', async () => {
+		vi.mocked(useAuthenticatedUserStore, { partial: true }).mockReturnValue({
+			userId: 'a139ef00-4e67-46e9-91c4-42e3f41f3661',
+			isAuthenticated: true,
+			selectedProfileId: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
+		});
+
+		renderWithQueryClient(<Header />);
+
+		expect(screen.queryByTestId('Nav')).not.toBeInTheDocument();
+		expect(screen.queryByTestId('ProfileMenu')).not.toBeInTheDocument();
+	});
+
+	it('opens ProfileMenuContent when click in ProfileMenuButton', async () => {
+		vi.mocked(useAuthenticatedUserStore, { partial: true }).mockReturnValue({
+			userId: 'a139ef00-4e67-46e9-91c4-42e3f41f3661',
+			isAuthenticated: true,
+			selectedProfileId: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
+		});
+		vi.mocked(useGetUserByIdQuery, { partial: true }).mockReturnValue({
+			data: {
+				id: 'a139ef00-4e67-46e9-91c4-42e3f41f3661',
+				email: 'marcos@example.com',
+				displayName: 'Marcos Santos',
+				profiles: [
+					{
+						id: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
+						name: 'Marcos Santos',
+						photoURL: '/assets/images/app/profiles/red.png',
+					},
+				],
+			},
+		});
+		renderWithQueryClient(<Header />);
+
+		expect(screen.getByTestId('ProfileMenuButton')).toBeInTheDocument();
+
+		const profileMenuButton = screen.getByTestId('ProfileMenuButton');
+		await userEvent.click(profileMenuButton);
+
+		expect(screen.queryByTestId('ProfileMenuContent')).toBeInTheDocument();
 	});
 });

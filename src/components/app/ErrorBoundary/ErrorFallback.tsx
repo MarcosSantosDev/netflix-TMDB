@@ -1,6 +1,6 @@
 import { FallbackProps } from 'react-error-boundary';
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui/Button/Button';
 
 const ErrorFallback = ({ resetErrorBoundary }: FallbackProps) => {
 	const contactSupport = () => {

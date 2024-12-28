@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundary as ErrorBoundaryComponent } from 'react-error-boundary';
 
 import ErrorFallback from './ErrorFallback';
 
-const ErrorBoundaryComponent = ({ children }: React.PropsWithChildren) => {
-	return <ErrorBoundary FallbackComponent={ErrorFallback}>{children}</ErrorBoundary>;
+export const ErrorBoundary = ({ children }: React.PropsWithChildren) => {
+	return <ErrorBoundaryComponent FallbackComponent={ErrorFallback}>{children}</ErrorBoundaryComponent>;
 };
-
-export default ErrorBoundaryComponent;

@@ -1,8 +1,13 @@
 {
-	"editor.formatOnSave": true, // Formata o código automaticamente ao salvar
+	"editor.formatOnSave": true, // Automatically format the code on save
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
-	},
-	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-	"prettier.requireConfig": true // Garante que o Prettier use o arquivo de configuração local
+	}, // Ensure ESLint fixes problems automatically on save
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	], // Specify which files ESLint should validate
+	"prettier.requireConfig": true // Ensure Prettier uses the local configuration file
 }

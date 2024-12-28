@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import { Icon } from '@/components/ui';
+import { Icon } from '@/components/ui/Icon/Icon';
 import { Movie } from '@/features/home/services/@types/home.types';
 
 import MovieListItem from './MovieListItem';
@@ -71,7 +71,7 @@ function MovieList({ title = '', movies = [], isLoadingMovies = false }: MovieLi
 
 	return (
 		<div className="group relative select-none">
-			<h2 className="pl-20 text-xl text-neutral-1">{title}</h2>
+			<h2 className="pl-20 text-lg md:text-xl text-neutral-1">{title}</h2>
 			<ArrowIcon
 				direction="left"
 				onClick={handleClickLeftArrow}

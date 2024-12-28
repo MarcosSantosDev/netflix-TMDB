@@ -1,7 +1,6 @@
-import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ReadProfile } from '@/@types/profile.types';
-import { Icon } from '@/components/ui';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -10,6 +9,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
+import { Icon } from '@/components/ui/Icon/Icon';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 
 type ProfileImgProps = {
@@ -19,7 +19,8 @@ type ProfileImgProps = {
 const ProfileImg = ({ photoURL }: ProfileImgProps) => (
 	<img
 		src={photoURL}
-		className="h-32 w-32 object-cover"
+		alt="Profile"
+		className="h-28 w-28 object-cover md:h-32 md:w-32"
 	/>
 );
 
@@ -28,69 +29,93 @@ type ProfileMenuProps = {
 };
 
 export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
-	const { logout } = useAuth();
+	const navigate = useNavigate();
+	const { logout, resetSelectedProfile } = useAuth();
 
-	const [openProfileMenu, setOpenProfileMenu] = React.useState(false);
-
-	const handleToggleProfileMenu = () => {
-		setOpenProfileMenu((currentState) => !currentState);
-	};
+	const { photoURL = '', name = '' } = profile;
 
 	const handleLogout = () => {
 		logout();
 	};
 
+	const handleChangeProfile = () => {
+		resetSelectedProfile();
+		navigate('/profiles');
+	};
+
 	return (
-		<DropdownMenu
-			open={openProfileMenu}
-			onOpenChange={handleToggleProfileMenu}
-		>
-			<DropdownMenuTrigger>
-				<div className="flex h-auto w-fit items-center justify-center gap-10 rounded-sm text-white">
-					<ProfileImg photoURL={profile?.photoURL ?? ''} />
-					<Icon
-						name="chevron-down"
-						size="lg"
-					/>
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				<div
+					data-testid="ProfileMenuButton"
+					aria-label="Abrir menu de perfil"
+					className="flex h-auto w-fit items-center justify-center gap-10 rounded-sm text-white"
+				>
+					<ProfileImg photoURL={photoURL} />
 				</div>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
+
+			<DropdownMenuContent
+				data-testid="ProfileMenuContent"
+				align="end"
+			>
 				<DropdownMenuLabel>
 					<div className="flex items-center justify-start gap-10">
-						<ProfileImg photoURL={profile?.photoURL ?? ''} />
-						<span className="text-inherit">{profile?.name ?? ''}</span>
+						<ProfileImg photoURL={photoURL} />
+						<span className="text-inherit">{name}</span>
 					</div>
 				</DropdownMenuLabel>
-				<DropdownMenuItem>
+
+				<DropdownMenuItem
+					className="cursor-pointer"
+					disabled
+				>
 					<Icon
-						name="pencil-ruler"
-						size="md"
+						name="bell"
+						size="lg"
 					/>
-					<span className="text-inherit">Gerenciar perfis</span>
+					<span className="text-inherit">Novidades</span>
 				</DropdownMenuItem>
-				<DropdownMenuItem>
+
+				<DropdownMenuItem
+					className="cursor-pointer"
+					onClick={handleChangeProfile}
+				>
 					<Icon
 						name="replace"
 						size="md"
 					/>
 					<span className="text-inherit">Trocar perfil</span>
 				</DropdownMenuItem>
-				<DropdownMenuItem>
+
+				<DropdownMenuItem
+					className="cursor-pointer"
+					disabled
+				>
 					<Icon
 						name="user"
 						size="md"
 					/>
 					<span className="text-inherit">Minha conta</span>
 				</DropdownMenuItem>
-				<DropdownMenuItem>
+
+				<DropdownMenuItem
+					className="cursor-pointer"
+					disabled
+				>
 					<Icon
 						name="circle-help"
 						size="md"
 					/>
 					<span className="text-inherit">Centro de ajuda</span>
 				</DropdownMenuItem>
+
 				<DropdownMenuSeparator />
-				<DropdownMenuItem onClick={handleLogout}>
+
+				<DropdownMenuItem
+					className="cursor-pointer"
+					onClick={handleLogout}
+				>
 					<Icon
 						name="log-out"
 						size="md"
