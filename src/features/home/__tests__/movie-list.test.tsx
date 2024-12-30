@@ -5,28 +5,45 @@ import { env } from '@/env';
 import MovieList from '../components/MovieList/MovieList';
 
 describe('MovieList', () => {
-	it('should render title and loading correctly', () => {
+	it('should render title of movie section correctly', () => {
 		render(
 			<MovieList
 				title="Popular Movies"
+				isLoadingMovies={false}
 				movies={[]}
-				isLoadingMovies
 			/>
 		);
 
-		const titleMovieList = screen.getByText('Popular Movies');
+		const titleOfMovieSection = screen.getByText('Popular Movies');
+		const movieListItemSkeleton = screen.queryAllByTestId('movie-list-item-skeleton');
+		const movieListItem = screen.queryAllByTestId('movie-list-item');
+
+		expect(titleOfMovieSection).toBeInTheDocument();
+		expect(movieListItemSkeleton).toHaveLength(0);
+		expect(movieListItem).toHaveLength(0);
+	});
+
+	it('should render loading movie list correctly', () => {
+		render(
+			<MovieList
+				title="Popular Movies"
+				isLoadingMovies
+				movies={[]}
+			/>
+		);
+
 		const movieListItemSkeleton = screen.getAllByTestId('movie-list-item-skeleton');
 		const movieListItem = screen.queryAllByTestId('movie-list-item');
 
-		expect(titleMovieList).toBeInTheDocument();
 		expect(movieListItemSkeleton).toHaveLength(20);
 		expect(movieListItem).toHaveLength(0);
 	});
 
-	it('should render title and movie list correctly', () => {
+	it('should render movie list correctly', () => {
 		render(
 			<MovieList
 				title="Popular Movies"
+				isLoadingMovies={false}
 				movies={[
 					{
 						id: 1,
@@ -39,17 +56,14 @@ describe('MovieList', () => {
 						imageUrl: '/image2.jpg',
 					},
 				]}
-				isLoadingMovies={false}
 			/>
 		);
 
-		const titleMovieList = screen.getByText('Popular Movies');
 		const movieListItemSkeleton = screen.queryAllByTestId('movie-list-item-skeleton');
 		const movieListItem = screen.queryAllByTestId('movie-list-item');
 		const movieImage1 = screen.getByAltText('Movie 1');
 		const movieImage2 = screen.getByAltText('Movie 2');
 
-		expect(titleMovieList).toBeInTheDocument();
 		expect(movieListItemSkeleton).toHaveLength(0);
 		expect(movieListItem).toHaveLength(2);
 		expect(movieImage1).toBeInTheDocument();
