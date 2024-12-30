@@ -5,11 +5,11 @@ import { Movie } from '@/features/home/services/@types/home.types';
 import { useGetTvInfoQuery } from '@/features/home/services/react-query/useGetTvInfoQuery';
 
 type MovieHighlightPanelProps = {
-	movie: Movie;
+	movieId: Movie['id'];
 };
 
-const MovieHighlightPanel = ({ movie }: MovieHighlightPanelProps) => {
-	const { data: chosenMovie, isLoading: isLoadingChosenMovie } = useGetTvInfoQuery(movie.id);
+const MovieHighlightPanel = ({ movieId }: MovieHighlightPanelProps) => {
+	const { data: chosenMovie, isLoading: isLoadingChosenMovie } = useGetTvInfoQuery(movieId);
 
 	if (!isLoadingChosenMovie && chosenMovie) {
 		const firstDate = new Date(chosenMovie.first_air_date);
@@ -21,6 +21,7 @@ const MovieHighlightPanel = ({ movie }: MovieHighlightPanelProps) => {
 		const seasons = `${chosenMovie.number_of_seasons} Temporada${chosenMovie.number_of_seasons > 1 ? 's' : ''}`;
 		return (
 			<div
+				role="banner"
 				className="h-screen w-screen bg-cover bg-center"
 				style={{
 					backgroundImage: `url(${env.VITE_TMDB_API_IMAGE_URL}/original${chosenMovie.backdrop_path})`,

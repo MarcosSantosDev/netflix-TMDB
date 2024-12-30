@@ -42,7 +42,7 @@ const HomePage = () => {
 				}}
 			/>
 			<Header className="fixed top-0 z-50" />
-			{chosenMovie ? <MovieHighlightPanel movie={chosenMovie} /> : null}
+			{chosenMovie ? <MovieHighlightPanel movieId={chosenMovie.id} /> : null}
 			<div className="-mt-120 flex flex-col gap-16 md:-mt-160">
 				<MovieList
 					title="Originais Netflix"
