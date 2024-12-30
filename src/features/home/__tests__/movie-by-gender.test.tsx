@@ -5,15 +5,11 @@ import { useGetDiscoverMoviesByGenreIdQuery } from '@/features/home/services/rea
 import { renderWithQueryClient } from '@/utils/RTL';
 
 import MovieByGenre from '../components/MovieByGenre/MovieByGenre';
+import { movieByGenderEmptyData, movieByGenderWithData } from './__fixtures__/movie-by-gender.fixture';
 
 vi.mock('@/features/home/services/react-query/useGetDiscoverMoviesByGenreIdQuery', () => ({
 	useGetDiscoverMoviesByGenreIdQuery: vi.fn(() => ({
-		data: {
-			results: [],
-			page: 0,
-			total_pages: 0,
-			total_results: 0,
-		},
+		data: movieByGenderEmptyData,
 		isLoading: false,
 	})),
 }));
@@ -33,29 +29,7 @@ describe('MovieByGenre', () => {
 
 	it('should render the MovieList component with the correct movies', () => {
 		vi.mocked(useGetDiscoverMoviesByGenreIdQuery, { partial: true }).mockReturnValue({
-			data: {
-				results: [
-					{
-						id: 1,
-						title: 'Movie 1',
-						poster_path: '/poster1.jpg',
-						backdrop_path: '/backdrop1.jpg',
-						vote_average: 7.5,
-						release_date: '2021-01-01',
-						overview: 'Overview 1',
-						adult: false,
-						genre_ids: [1, 2],
-						original_language: 'en',
-						original_title: 'Movie 1',
-						popularity: 100,
-						video: false,
-						vote_count: 100,
-					},
-				],
-				page: 0,
-				total_pages: 0,
-				total_results: 0,
-			},
+			data: movieByGenderWithData,
 			isLoading: false,
 		});
 
