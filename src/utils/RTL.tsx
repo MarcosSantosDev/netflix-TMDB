@@ -16,6 +16,13 @@ export const renderWithBrowserRouter = async (ui: React.ReactNode, options?: Omi
 	});
 };
 
+export const renderWithQueryClient = async (ui: React.ReactNode, options?: Omit<RenderOptions, 'queries'>) => {
+	return render(ui, {
+		...options,
+		wrapper: ({ children }) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
+	});
+};
+
 const wrapper = ({ children }: React.PropsWithChildren) => (
 	<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );

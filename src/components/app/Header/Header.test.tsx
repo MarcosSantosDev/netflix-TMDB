@@ -1,18 +1,11 @@
-import { QueryClientProvider } from '@tanstack/react-query';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
-import { queryClient } from '@/libs/react-query';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
+import { renderWithQueryClient } from '@/utils/RTL';
 
 import { Header } from './Header';
-
-const renderWithQueryClient = (ui: React.ReactNode) => {
-	return render(ui, {
-		wrapper: ({ children }) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
-	});
-};
 
 vi.mock('react-router-dom', () => ({
 	useNavigate: vi.fn(),
@@ -48,8 +41,8 @@ describe('Header component', () => {
 	});
 
 	it('renders with appropriate styles based on profile state', () => {
-		const { container } = renderWithQueryClient(<Header className="custom-class" />);
-		const header = container.querySelector('header');
+		renderWithQueryClient(<Header className="custom-class" />);
+		const header = screen.getByTestId('Header');
 
 		expect(header).toHaveClass('custom-class');
 	});
