@@ -12,7 +12,7 @@ import { useAuth } from '@/features/auth/hooks/useAuth';
 
 const schema = z.object({
 	email: z.string().min(1, 'Informe seu email.').email('Informe um email valido'),
-	password: z.string().min(1, 'Informe sua senha.').min(4, 'Senha muito curta - deve conter no mínimo 4 letras.'),
+	password: z.string().min(1, 'Informe sua senha.'),
 });
 
 type SignInFormData = {
@@ -24,8 +24,8 @@ const SignInForm = () => {
 	const form = useForm<SignInFormData>({
 		mode: 'onSubmit',
 		defaultValues: {
-			email: 'marcos@example.com',
-			password: 'password',
+			email: '',
+			password: '',
 		},
 		resolver: zodResolver(schema),
 	});
@@ -38,6 +38,7 @@ const SignInForm = () => {
 
 	return (
 		<form
+			role="form"
 			onSubmit={form.handleSubmit(onSubmit)}
 			className="flex flex-col gap-20"
 			autoComplete="off"
