@@ -3,6 +3,10 @@ import { renderHook } from '@testing-library/react';
 import useBreakpoint, { breakpoints } from '../useBreakpoint';
 
 describe('useBreakpoint', () => {
+	beforeEach(() => {
+		vi.unstubAllGlobals();
+	});
+
 	it('should return the correct breakpoint "sm"', () => {
 		vi.stubGlobal('innerWidth', breakpoints.sm);
 		const { result } = renderHook(() => useBreakpoint('sm'));
