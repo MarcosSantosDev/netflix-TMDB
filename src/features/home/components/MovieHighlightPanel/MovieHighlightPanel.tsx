@@ -24,7 +24,7 @@ const MovieHighlightPanel = ({ movieId }: MovieHighlightPanelProps) => {
 				role="banner"
 				className="h-screen w-screen bg-cover bg-center"
 				style={{
-					backgroundImage: `url(${env.VITE_TMDB_API_IMAGE_URL}/original${chosenMovie.backdrop_path})`,
+					backgroundImage: `url(${env.VITE_TMDB_API_IMAGE_URL}/original${chosenMovie.poster_path}?language=pt-BR&include_image_language=pt,en,null)`,
 				}}
 			>
 				<div className="h-full w-full bg-gradient-to-t-highlight">
