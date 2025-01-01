@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { ReadProfile } from '@/@types/profile.types';
 import { Header } from '@/components/app/Header/Header';
 import { SEO } from '@/components/app/SEO/SEO';
+import { Button } from '@/components/ui/Button/Button';
 import { NewProfile, ProfileButton } from '@/features/profiles/components';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
@@ -61,6 +62,15 @@ const ProfilesPage = () => {
 						</ProfileButton>
 						<NewProfile />
 					</div>
+				</div>
+				<div className="w-full py-20">
+					<Button
+						variant="secondary"
+						size="lg"
+						className="px-20"
+					>
+						Gerenciar perfis
+					</Button>
 				</div>
 			</div>
 		</div>

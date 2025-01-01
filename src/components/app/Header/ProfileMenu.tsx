@@ -49,8 +49,9 @@ export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
 				<div
 					data-testid="ProfileMenuButton"
 					aria-label="Abrir menu de perfil"
-					className="flex h-auto w-fit items-center justify-center gap-10 rounded-sm text-white"
+					className="flex h-auto w-fit cursor-pointer items-center justify-center gap-10 rounded-sm text-white"
 				>
+					<span className="max-w-64 truncate text-md text-inherit">{name}</span>
 					<ProfileImg photoURL={photoURL} />
 				</div>
 			</DropdownMenuTrigger>
@@ -71,10 +72,10 @@ export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
 					disabled
 				>
 					<Icon
-						name="bell"
+						name="scan-face"
 						size="lg"
 					/>
-					<span className="text-inherit">Novidades</span>
+					<span className="text-inherit">Gerenciar perfis</span>
 				</DropdownMenuItem>
 
 				<DropdownMenuItem
@@ -113,13 +114,9 @@ export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
 				<DropdownMenuSeparator />
 
 				<DropdownMenuItem
-					className="cursor-pointer"
+					className="flex cursor-pointer justify-center"
 					onClick={handleLogout}
 				>
-					<Icon
-						name="log-out"
-						size="md"
-					/>
 					<span className="text-inherit">Sair da Netflix</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
