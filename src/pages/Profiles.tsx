@@ -6,7 +6,8 @@ import { ReadProfile } from '@/@types/profile.types';
 import { Header } from '@/components/app/Header/Header';
 import { SEO } from '@/components/app/SEO/SEO';
 import { Button } from '@/components/ui/Button/Button';
-import { NewProfile, ProfileButton } from '@/features/profiles/components';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { ProfileButton } from '@/features/profiles/components/ProfileButton';
 import { useGetUserByIdQuery } from '@/services/react-query/useGetUserByIdQuery';
 import { useAuthenticatedUserStore } from '@/store/useAuthenticatedUserStore';
 
@@ -49,25 +50,31 @@ const ProfilesPage = () => {
 								onClick={handleSelectNetflixProfile(profile)}
 							>
 								<img
+									className="scale-95 rounded-sm object-cover"
 									src={profile.photoURL}
-									className="object-cover"
+									alt="profile"
 								/>
 							</ProfileButton>
 						))}
 						<ProfileButton
-							label="Kids"
+							label="Novo Perfil"
 							onClick={() => {}}
 						>
-							<img src="/assets/images/app/profiles/kids.png" />
+							<div className="flex h-52 w-52 items-center justify-center rounded-full bg-neutral-400">
+								<Icon
+									size="xl"
+									name="plus"
+									className="text-black"
+								/>
+							</div>
 						</ProfileButton>
-						<NewProfile />
 					</div>
 				</div>
 				<div className="w-full py-20">
 					<Button
 						variant="secondary"
 						size="lg"
-						className="px-20"
+						className="px-40"
 					>
 						Gerenciar perfis
 					</Button>

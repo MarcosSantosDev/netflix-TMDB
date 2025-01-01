@@ -20,7 +20,7 @@ export const mockAppDB = factory({
 const profile = mockAppDB.profile.create({
 	id: 'b139ef01-4e87-46e9-91c4-42e3f41f3667',
 	name: 'Marcos Santos',
-	photoURL: '/assets/images/app/profiles/red.png',
+	photoURL: '/assets/images/app/profiles/popular/01.svg',
 });
 
 mockAppDB.user.create({
