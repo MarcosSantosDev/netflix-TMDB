@@ -9,6 +9,7 @@ import routePaths from './routePaths';
 
 const SignIn = React.lazy(() => import('@/pages/SignIn'));
 const Profiles = React.lazy(() => import('@/pages/Profiles'));
+const Profile = React.lazy(() => import('@/pages/Profile'));
 const Home = React.lazy(() => import('@/pages/Home'));
 
 export const routes: RouteObject[] = [
@@ -22,6 +23,16 @@ export const routes: RouteObject[] = [
 				id: 'PROFILES',
 				path: routePaths.PROFILES,
 				element: <Profiles />,
+			},
+			{
+				id: 'PROFILES_NEW',
+				path: routePaths.PROFILES_NEW,
+				element: <Profile />,
+			},
+			{
+				id: 'PROFILES_EDIT',
+				path: `${routePaths.PROFILES_EDIT}/:id`,
+				element: <Profile />,
 			},
 			{
 				id: 'HOME',
