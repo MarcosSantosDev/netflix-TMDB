@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import clsx from 'clsx';
 
 import { Header } from '@/components/app/Header/Header';
@@ -28,4 +30,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile;
+export default React.memo(Profile);

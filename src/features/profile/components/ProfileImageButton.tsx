@@ -7,11 +7,11 @@ export const ProfileImageButton = ({ imagePath, onSelectImagePath }: ProfileImag
 	<button
 		type="button"
 		onClick={() => onSelectImagePath(imagePath)}
-		className="relative h-64 w-64 overflow-hidden rounded-sm hover:cursor-pointer"
+		className="group relative h-64 w-64 overflow-hidden rounded-sm outline-none hover:cursor-pointer"
 	>
-		<div className="absolute top-0 z-30 h-64 w-64 transition-all duration-200 hover:bg-black/60" />
+		<div className="absolute top-0 z-30 h-full w-full transition-all duration-200 hover:bg-black/60 group-focus:bg-black/60" />
 		<img
-			className="h-64 w-64 rounded-sm object-cover"
+			className="h-full w-full rounded-sm object-cover"
 			src={imagePath}
 		/>
 	</button>

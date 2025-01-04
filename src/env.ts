@@ -6,7 +6,6 @@ const envSchema = z.object({
 	VITE_API_URL: z.string(),
 	VITE_APP_PORT: z.string(),
 	VITE_MSW_ACTIVATED: z.string(),
-	VITE_MSW_DELAY_MS: z.string(),
 	VITE_TMDB_API_URL: z.string(),
 	VITE_TMDB_API_IMAGE_URL: z.string(),
 	VITE_TMDB_API_ACCESS_TOKEN: z.string(),

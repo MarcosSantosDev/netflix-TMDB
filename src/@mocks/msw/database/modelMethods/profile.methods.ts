@@ -3,6 +3,28 @@ import { NewProfile, ReadProfile, UpdateProfile } from '@/@types/profile.types';
 import { mockAppDB } from '../app.database';
 
 export const profileMethods = {
+	readProfileById: (profileId: string): ReadProfile | null => {
+		const profile = mockAppDB.profile.findFirst({
+			where: {
+				id: {
+					equals: profileId,
+				},
+			},
+		});
+
+		return profile;
+	},
+	readProfileByName: (profileName: string): ReadProfile | null => {
+		const profile = mockAppDB.profile.findFirst({
+			where: {
+				name: {
+					equals: profileName,
+				},
+			},
+		});
+
+		return profile;
+	},
 	createProfile: (profile: NewProfile): ReadProfile => {
 		return mockAppDB.profile.create(profile);
 	},
@@ -13,10 +35,7 @@ export const profileMethods = {
 					equals: profileId,
 				},
 			},
-			data: {
-				name: profileUpdated.name,
-				photoURL: profileUpdated.photoURL,
-			},
+			data: profileUpdated,
 		});
 
 		return updatedData;

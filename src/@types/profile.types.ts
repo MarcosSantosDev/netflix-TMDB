@@ -2,6 +2,7 @@ export type ProfileDB = {
 	id: string;
 	name: string;
 	photoURL: string;
+	kidProfile: boolean;
 };
 
 export type ReadProfile = ProfileDB;

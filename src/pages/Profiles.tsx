@@ -27,7 +27,7 @@ const ProfilesPage = () => {
 
 	const handleSelectNetflixProfile = (profile: ReadProfile) => {
 		if (modeProfileManagement) {
-			navigate(`${routePaths.PROFILES_EDIT}/${profile.id}`);
+			navigate(routePaths.PROFILE_ID.replace(':id', profile.id));
 		} else {
 			setSelectedProfile({
 				profileId: profile.id,
@@ -36,7 +36,7 @@ const ProfilesPage = () => {
 	};
 
 	const handleNavigateToNewProfile = () => {
-		navigate(routePaths.PROFILES_NEW);
+		navigate(routePaths.PROFILE_ID.replace(':id', 'new'));
 	};
 
 	const handleToggleModeProfileManagement = () => {

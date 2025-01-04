@@ -25,13 +25,8 @@ export const routes: RouteObject[] = [
 				element: <Profiles />,
 			},
 			{
-				id: 'PROFILES_NEW',
-				path: routePaths.PROFILES_NEW,
-				element: <Profile />,
-			},
-			{
-				id: 'PROFILES_EDIT',
-				path: `${routePaths.PROFILES_EDIT}/:id`,
+				id: 'PROFILE_ID',
+				path: routePaths.PROFILE_ID,
 				element: <Profile />,
 			},
 			{

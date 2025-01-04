@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 
 import { ReadProfile } from '@/@types/profile.types';
 import NetflixLogo from '@/components/app/SVG/NetflixLogo';
@@ -17,6 +18,8 @@ type HeaderProps = {
 };
 
 export function Header({ className = '' }: HeaderProps) {
+	const navigate = useNavigate();
+
 	const { isAuthenticated, selectedProfileId } = useAuthenticatedUserStore();
 	const { data: user } = useGetUserByIdQuery();
 
@@ -43,10 +46,12 @@ export function Header({ className = '' }: HeaderProps) {
 				{isAuthenticated && hasProfile && <Nav />}
 			</div>
 			<div className="order-2 flex justify-center md:order-1">
-				<NetflixLogo
-					className="h-20 fill-red md:h-28"
-					data-testid="NetflixLogo"
-				/>
+				<button onClick={() => navigate('/')}>
+					<NetflixLogo
+						className="h-20 fill-red md:h-28"
+						data-testid="NetflixLogo"
+					/>
+				</button>
 			</div>
 			<div className="order-3 flex justify-center">
 				{isAuthenticated && hasProfile && (

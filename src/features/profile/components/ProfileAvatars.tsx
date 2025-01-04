@@ -2,6 +2,15 @@ import * as React from 'react';
 
 import { ProfileImageButton } from './ProfileImageButton';
 
+type SectionProps = { title: string; children: React.ReactNode };
+
+const Section = ({ title, children }: SectionProps) => (
+	<div className="space-y-10 text-left">
+		<p className="text-lg font-semibold text-white">{title}</p>
+		<div className="flex max-w-full flex-wrap items-center justify-center gap-16 md:justify-start">{children}</div>
+	</div>
+);
+
 const getListOfProfileImages = (path: string, maxRandonNumber: number) => {
 	const mapList = Array.from({ length: maxRandonNumber }, (_, i) => i + 1);
 
@@ -23,9 +32,8 @@ type ProfileAvatarsProps = {
 
 const ProfileAvatars = ({ onSelectImagePath }: ProfileAvatarsProps) => {
 	return (
-		<div className="space-y-10 text-left">
-			<p className="text-xl font-semibold text-white">Populares</p>
-			<div className="flex flex-wrap items-center justify-center gap-16 md:w-[565px] md:justify-start">
+		<div className="space-y-16">
+			<Section title="Populares">
 				{popularProfileImages.map((imagePath: string) => (
 					<ProfileImageButton
 						key={imagePath}
@@ -33,10 +41,9 @@ const ProfileAvatars = ({ onSelectImagePath }: ProfileAvatarsProps) => {
 						onSelectImagePath={onSelectImagePath}
 					/>
 				))}
-			</div>
+			</Section>
 
-			<p className="text-xl font-semibold text-white">Outros</p>
-			<div className="flex flex-wrap items-center justify-center gap-16 md:w-[565px] md:justify-start">
+			<Section title="Todos">
 				{profileImages.map((imagePath: string) => (
 					<ProfileImageButton
 						key={imagePath}
@@ -44,7 +51,7 @@ const ProfileAvatars = ({ onSelectImagePath }: ProfileAvatarsProps) => {
 						onSelectImagePath={onSelectImagePath}
 					/>
 				))}
-			</div>
+			</Section>
 		</div>
 	);
 };
