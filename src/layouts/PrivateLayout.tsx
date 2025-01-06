@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router';
 
 import { Suspense } from '@/components/app/Suspense/Suspense';
 import { useAuth } from '@/features/auth/hooks/useAuth';

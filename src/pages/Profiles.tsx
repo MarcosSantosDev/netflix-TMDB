@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import clsx from 'clsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { ReadProfile } from '@/@types/profile.types';
 import { Header } from '@/components/app/Header/Header';

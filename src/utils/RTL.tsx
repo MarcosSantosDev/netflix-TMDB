@@ -3,7 +3,7 @@ import { act } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { render, RenderOptions } from '@testing-library/react';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 
 import { queryClient } from '@/libs/react-query';
 

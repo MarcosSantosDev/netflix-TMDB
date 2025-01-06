@@ -7,7 +7,7 @@ import { renderWithQueryClient } from '@/utils/RTL';
 
 import { Header } from './Header';
 
-vi.mock('react-router-dom', () => ({
+vi.mock('react-router', () => ({
 	useNavigate: vi.fn(),
 }));
 
