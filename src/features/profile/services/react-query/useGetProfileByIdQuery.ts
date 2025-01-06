@@ -14,6 +14,6 @@ export const useGetProfileByIdQuery = (id: string) => {
 			return data.data;
 		},
 		staleTime: Infinity,
-		enabled: false,
+		enabled: id.length > 0 && id !== 'new',
 	});
 };

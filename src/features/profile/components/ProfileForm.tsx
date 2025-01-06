@@ -10,12 +10,10 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { Input } from '@/components/ui/Input/Input';
 import { Label } from '@/components/ui/Label/Label';
 import ProfileAvatars from '@/features/profile/components/ProfileAvatars';
+import { useCreateProfileMutation } from '@/features/profile/services/react-query/useCreateProfileMutation';
+import { useDeleteProfileMutation } from '@/features/profile/services/react-query/useDeleteProfileMutation';
 import { useGetProfileByIdQuery } from '@/features/profile/services/react-query/useGetProfileByIdQuery';
-import useToast from '@/hooks/useToast';
-
-import { useCreateProfileMutation } from '../services/react-query/useCreateProfileMutation';
-import { useDeleteProfileMutation } from '../services/react-query/useDeleteProfileMutation';
-import { useUpdateProfileMutation } from '../services/react-query/useUpdateProfileMutation';
+import { useUpdateProfileMutation } from '@/features/profile/services/react-query/useUpdateProfileMutation';
 
 const randonProfileImage = () => {
 	const randonProfileImageNumber = Math.floor(Math.random() * 16) + 1;
@@ -32,12 +30,10 @@ type ProfileFormProps = {
 };
 
 const ProfileForm = () => {
-	const { showErrorToast } = useToast();
-
-	const { id } = useParams();
+	const { id = '' } = useParams();
 	const isNewProfile = id === 'new';
 
-	const { refetch: getProfile, data: profile } = useGetProfileByIdQuery('b139ef01-4e87-46e9-91c4-42e3f41f3667');
+	const { data: profile } = useGetProfileByIdQuery(id);
 	const { mutate: createProfile } = useCreateProfileMutation();
 	const { mutate: updateProfile } = useUpdateProfileMutation();
 	const { mutate: deleteProfile } = useDeleteProfileMutation();
@@ -53,21 +49,17 @@ const ProfileForm = () => {
 	});
 
 	const onSubmit = (formData: ProfileFormProps) => {
-		try {
-			const profileData = {
-				name: formData.profileName,
-				photoURL: formData.profileImage,
-				kidProfile: formData.kidProfile,
-			};
-			if (!isNewProfile) {
-				if (profile) {
-					updateProfile({ id: profile.id, ...profileData });
-				}
-			} else {
-				createProfile(profileData);
+		const profileData = {
+			name: formData.profileName,
+			photoURL: formData.profileImage,
+			kidProfile: formData.kidProfile,
+		};
+		if (!isNewProfile) {
+			if (profile) {
+				updateProfile({ id: profile.id, ...profileData });
 			}
-		} catch {
-			showErrorToast('Ocorreu um erro, e não foi possivel salvar o perfil');
+		} else {
+			createProfile(profileData);
 		}
 	};
 
@@ -83,9 +75,7 @@ const ProfileForm = () => {
 	};
 
 	React.useEffect(() => {
-		if (!isNewProfile) {
-			getProfile();
-		} else {
+		if (isNewProfile) {
 			setProfileImage(randonProfileImage());
 			setValue('profileImage', profileImage);
 		}
