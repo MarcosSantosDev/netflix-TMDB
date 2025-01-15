@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import clsx from 'clsx';
 
@@ -12,6 +12,7 @@ type NavLinkProps = PropsWithChildren & {
 
 const NavLink = ({ children, active = false, className = '' }: NavLinkProps) => (
 	<button
+		type="button"
 		aria-current={active ? 'page' : undefined}
 		data-active={active}
 		className={clsx(
@@ -32,19 +33,9 @@ type NavProps = {
 
 export const Nav = ({ className }: NavProps) => {
 	return (
-		<div
-			className={className}
-			data-testid="Nav"
-		>
-			<IconButton
-				aria-label="Menu"
-				className="md:hidden"
-				variant="ghost"
-			>
-				<Icon
-					name="menu"
-					size="lg"
-				/>
+		<div className={className} data-testid="Nav">
+			<IconButton aria-label="Menu" className="md:hidden" variant="ghost">
+				<Icon name="menu" size="lg" />
 			</IconButton>
 
 			<nav className="hidden h-24 items-center gap-24 rounded-full md:flex">

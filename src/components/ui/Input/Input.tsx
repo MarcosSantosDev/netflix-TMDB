@@ -24,13 +24,7 @@ InputBase.displayName = 'InputBase';
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
-	return (
-		<InputBase
-			className={cn('rounded-sm border border-white30Percent', className)}
-			ref={ref}
-			{...props}
-		/>
-	);
+	return <InputBase className={cn('rounded-sm border border-white30Percent', className)} ref={ref} {...props} />;
 });
 
 Input.displayName = 'Input';

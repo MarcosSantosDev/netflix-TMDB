@@ -1,4 +1,4 @@
-import { ToastOptions, toast } from 'react-toastify';
+import { type ToastOptions, toast } from 'react-toastify';
 
 import { Icon } from '@/components/ui/Icon/Icon';
 
@@ -16,37 +16,13 @@ const defaultOptions: ToastOptions = {
 	icon: ({ type }) => {
 		switch (type) {
 			case 'info':
-				return (
-					<Icon
-						size="lg"
-						name="badge-alert"
-						className="text-blue-500"
-					/>
-				);
+				return <Icon size="lg" name="badge-alert" className="text-blue-500" />;
 			case 'error':
-				return (
-					<Icon
-						size="lg"
-						name="circle-x"
-						className="text-error-500"
-					/>
-				);
+				return <Icon size="lg" name="circle-x" className="text-error-500" />;
 			case 'success':
-				return (
-					<Icon
-						size="lg"
-						name="circle-check"
-						className="text-success-500"
-					/>
-				);
+				return <Icon size="lg" name="circle-check" className="text-success-500" />;
 			case 'warning':
-				return (
-					<Icon
-						size="lg"
-						name="circle-alert"
-						className="text-warning-500"
-					/>
-				);
+				return <Icon size="lg" name="circle-alert" className="text-warning-500" />;
 			default:
 				return null;
 		}

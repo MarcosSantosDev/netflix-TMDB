@@ -28,16 +28,10 @@ const SignInPage = () => {
 						<SignInForm />
 						<div className="flex flex-col gap-6">
 							<span className="mx-4 whitespace-nowrap text-center text-md text-neutral-300">OU</span>
-							<Button
-								variant="secondary"
-								onClick={onLoginWithAccessCode}
-							>
+							<Button type="button" variant="secondary" onClick={onLoginWithAccessCode}>
 								Usar um código de acesso
 							</Button>
-							<Button
-								variant="link"
-								onClick={onLoginWithAccessCode}
-							>
+							<Button type="button" variant="link" onClick={onLoginWithAccessCode}>
 								Esqueceu a senha ?
 							</Button>
 						</div>

@@ -25,11 +25,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Omit<InputProps, 'type'
 				onClick={togglePasswordVisibility}
 				className="flex h-32 w-auto items-center justify-center rounded-full bg-transparent p-8 text-neutral-1 hover:bg-neutral-900 focus-visible:bg-neutral-600 focus-visible:outline-none"
 			>
-				<Icon
-					className="bg-transparent"
-					name={showPassword ? 'eye' : 'eye-off'}
-					size="md"
-				/>
+				<Icon className="bg-transparent" name={showPassword ? 'eye' : 'eye-off'} size="md" />
 			</button>
 		</div>
 	);

@@ -3,7 +3,7 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { useNavigate } from 'react-router';
 
-import { ReadProfile } from '@/@types/profile.types';
+import type { ReadProfile } from '@/@types/profile.types';
 import { Header } from '@/components/app/Header/Header';
 import { SEO } from '@/components/app/SEO/SEO';
 import { Button } from '@/components/ui/Button/Button';
@@ -68,24 +68,12 @@ const ProfilesPage = () => {
 								label={profile.name}
 								onSelect={() => handleSelectNetflixProfile(profile)}
 							>
-								<img
-									className="scale-95 rounded-sm object-cover"
-									src={profile.photoURL}
-									alt="profile"
-								/>
+								<img className="scale-95 rounded-sm object-cover" src={profile.photoURL} alt="profile" />
 							</ProfileButton>
 						))}
-						<ProfileButton
-							mode="normal"
-							label="Novo Perfil"
-							onSelect={handleNavigateToNewProfile}
-						>
+						<ProfileButton mode="normal" label="Novo Perfil" onSelect={handleNavigateToNewProfile}>
 							<div className="flex h-52 w-52 items-center justify-center rounded-full bg-neutral-400">
-								<Icon
-									size="xl"
-									name="plus"
-									className="text-black"
-								/>
+								<Icon size="xl" name="plus" className="text-black" />
 							</div>
 						</ProfileButton>
 					</div>

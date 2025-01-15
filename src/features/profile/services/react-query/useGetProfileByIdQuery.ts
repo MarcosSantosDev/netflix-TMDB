@@ -13,7 +13,7 @@ export const useGetProfileByIdQuery = (id: string) => {
 		select: (data) => {
 			return data.data;
 		},
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: id.length > 0 && id !== 'new',
 	});
 };

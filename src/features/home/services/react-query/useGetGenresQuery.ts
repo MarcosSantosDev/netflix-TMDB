@@ -13,7 +13,7 @@ export const useGetGenresQuery = () => {
 	return useQuery({
 		queryKey: [GET_GENRES_QUERY_KEY] as UseGetGenresQueryKey,
 		queryFn: tmdbService.getGenres,
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

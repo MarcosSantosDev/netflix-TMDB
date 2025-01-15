@@ -13,7 +13,7 @@ export const useGetTrendingQuery = () => {
 	return useQuery({
 		queryKey: [GET_TRENDING_QUERY_KEY] as UseGetTrendingQueryKey,
 		queryFn: tmdbService.getTrending,
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

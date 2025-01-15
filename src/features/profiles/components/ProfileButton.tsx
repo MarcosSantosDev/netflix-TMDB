@@ -14,11 +14,7 @@ type ProfileProps = React.PropsWithChildren & ProfileFunctionsByMode;
 
 export const ProfileButton = ({ children, mode, label, onSelect }: ProfileProps) => {
 	return (
-		<button
-			className="flex cursor-pointer flex-col items-center space-y-20 md:w-100"
-			type="button"
-			onClick={onSelect}
-		>
+		<button className="flex cursor-pointer flex-col items-center space-y-20 md:w-100" type="button" onClick={onSelect}>
 			<div
 				className={clsx(
 					'relative flex h-64 w-64 items-center justify-center rounded-sm transition-all hover:bg-neutral-300/20',
@@ -36,11 +32,7 @@ export const ProfileButton = ({ children, mode, label, onSelect }: ProfileProps)
 							mode === 'editing',
 					})}
 				>
-					<Icon
-						size="lg"
-						name="pencil-line"
-						className="text-neutral-200"
-					/>
+					<Icon size="lg" name="pencil-line" className="text-neutral-200" />
 				</div>
 				{children}
 			</div>

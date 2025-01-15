@@ -35,21 +35,13 @@ const ProfileAvatars = ({ onSelectImagePath }: ProfileAvatarsProps) => {
 		<div className="space-y-16">
 			<Section title="Populares">
 				{popularProfileImages.map((imagePath: string) => (
-					<ProfileImageButton
-						key={imagePath}
-						imagePath={imagePath}
-						onSelectImagePath={onSelectImagePath}
-					/>
+					<ProfileImageButton key={imagePath} imagePath={imagePath} onSelectImagePath={onSelectImagePath} />
 				))}
 			</Section>
 
 			<Section title="Todos">
 				{profileImages.map((imagePath: string) => (
-					<ProfileImageButton
-						key={imagePath}
-						imagePath={imagePath}
-						onSelectImagePath={onSelectImagePath}
-					/>
+					<ProfileImageButton key={imagePath} imagePath={imagePath} onSelectImagePath={onSelectImagePath} />
 				))}
 			</Section>
 		</div>

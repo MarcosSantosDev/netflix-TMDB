@@ -16,12 +16,12 @@ import { useGetProfileByIdQuery } from '@/features/profile/services/react-query/
 import { useUpdateProfileMutation } from '@/features/profile/services/react-query/useUpdateProfileMutation';
 import routePaths from '@/router/config/routePaths';
 
-const randonProfileImage = () => {
-	const randonProfileImageNumber = Math.floor(Math.random() * 16) + 1;
-	if (randonProfileImageNumber < 10) {
-		return `/assets/images/app/profiles/popular/0${randonProfileImageNumber}.svg`;
+const randomProfileImage = () => {
+	const randomProfileImageNumber = Math.floor(Math.random() * 16) + 1;
+	if (randomProfileImageNumber < 10) {
+		return `/assets/images/app/profiles/popular/0${randomProfileImageNumber}.svg`;
 	}
-	return `/assets/images/app/profiles/popular/${randonProfileImageNumber}.svg`;
+	return `/assets/images/app/profiles/popular/${randomProfileImageNumber}.svg`;
 };
 
 type ProfileFormProps = {
@@ -82,10 +82,10 @@ const ProfileForm = () => {
 
 	React.useEffect(() => {
 		if (isNewProfile) {
-			setProfileImage(randonProfileImage());
+			setProfileImage(randomProfileImage());
 			setValue('profileImage', profileImage);
 		}
-	}, [isNewProfile]);
+	}, [isNewProfile, profileImage, setValue]);
 
 	React.useEffect(() => {
 		const profileImageUrl = profile?.photoURL ?? '';
@@ -93,36 +93,22 @@ const ProfileForm = () => {
 		setValue('profileImage', profileImageUrl);
 		setValue('profileName', profile?.name ?? '');
 		setValue('kidProfile', profile?.kidProfile ?? false);
-	}, [profile]);
+	}, [profile, setValue]);
 
 	return (
 		<div className="max-w-400 space-y-20">
-			<form
-				className="flex w-full max-w-full flex-col gap-20"
-				onSubmit={handleSubmit(onSubmit)}
-			>
+			<form className="flex w-full max-w-full flex-col gap-20" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex h-100 gap-20">
 					<Dialog>
 						<DialogTrigger asChild>
 							<div className="relative h-100 w-100 overflow-hidden rounded-sm hover:cursor-pointer">
-								<img
-									src={profileImage}
-									alt="profile"
-									className="h-full w-full rounded-sm object-cover"
-								/>
+								<img src={profileImage} alt="profile" className="h-full w-full rounded-sm object-cover" />
 								<div className="absolute top-0 z-30 flex h-full w-full items-center justify-center bg-black/60 transition-all duration-200 hover:bg-black/80">
-									<Icon
-										size="lg"
-										name="images"
-										className="text-neutral-200"
-									/>
+									<Icon size="lg" name="images" className="text-neutral-200" />
 								</div>
 							</div>
 						</DialogTrigger>
-						<DialogContent
-							size="lg"
-							aria-describedby="choose profile avatar"
-						>
+						<DialogContent size="lg" aria-describedby="choose profile avatar">
 							<DialogHeader>
 								<DialogTitle className="text-center">Escolha um avatar</DialogTitle>
 							</DialogHeader>
@@ -134,24 +120,14 @@ const ProfileForm = () => {
 						</DialogContent>
 					</Dialog>
 					<div className="flex w-240 flex-col gap-20">
-						<Input
-							{...register('profileName')}
-							type="text"
-							placeholder="Nome do perfil"
-						/>
+						<Input {...register('profileName')} type="text" placeholder="Nome do perfil" />
 						<div className="flex items-center gap-10">
 							<Controller
 								name="kidProfile"
 								control={control}
 								render={({ field: { onChange, onBlur, value, ref } }) => {
 									return (
-										<Checkbox
-											id="kidProfile"
-											ref={ref}
-											onCheckedChange={onChange}
-											onBlur={onBlur}
-											checked={value}
-										/>
+										<Checkbox id="kidProfile" ref={ref} onCheckedChange={onChange} onBlur={onBlur} checked={value} />
 									);
 								}}
 							/>
@@ -172,24 +148,12 @@ const ProfileForm = () => {
 							Deletar
 						</Button>
 					) : null}
-					<Button
-						type="submit"
-						variant="tertiary"
-						size="lg"
-						className="w-full px-40"
-					>
+					<Button type="submit" variant="tertiary" size="lg" className="w-full px-40">
 						Salvar
 					</Button>
 				</div>
 			</form>
-			<Button
-				type="button"
-				variant="link"
-				size="lg"
-				className="w-full px-40"
-				icon="arrow-left"
-				onClick={handleGoBack}
-			>
+			<Button type="button" variant="link" size="lg" className="w-full px-40" icon="arrow-left" onClick={handleGoBack}>
 				Voltar
 			</Button>
 		</div>

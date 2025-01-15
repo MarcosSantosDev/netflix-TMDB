@@ -1,4 +1,4 @@
-import { NewUser, ReadUser, UpdateUser, UserDB } from '@/@types/user.types';
+import type { NewUser, ReadUser, UpdateUser, UserDB } from '@/@types/user.types';
 
 import { mockAppDB } from '../app.database';
 

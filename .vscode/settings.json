@@ -1,13 +1,17 @@
 {
+	"editor.defaultFormatter": "biomejs.biome",
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	"editor.formatOnSave": true, // Automatically format the code on save
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit"
-	}, // Ensure ESLint fixes problems automatically on save
-	"eslint.validate": [
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact"
-	], // Specify which files ESLint should validate
-	"prettier.requireConfig": true // Ensure Prettier uses the local configuration file
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "always"
+	}
 }

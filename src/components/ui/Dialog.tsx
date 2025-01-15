@@ -57,16 +57,14 @@ export const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrim
 				{children}
 				<DialogPrimitive.Close asChild>
 					<button
+						type="button"
 						className={clsx(
 							'absolute right-5 top-5 inline-flex size-[25px] appearance-none items-center justify-center rounded-full bg-transparent text-neutral-200',
 							'hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none'
 						)}
 						aria-label="Close"
 					>
-						<Icon
-							size="lg"
-							name="x"
-						/>
+						<Icon size="lg" name="x" />
 						<span className="sr-only">Close</span>
 					</button>
 				</DialogPrimitive.Close>
@@ -77,18 +75,12 @@ export const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrim
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 export const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<div
-		className={cn('flex flex-col space-y-1.5 py-4 text-center sm:text-left', className)}
-		{...props}
-	/>
+	<div className={cn('flex flex-col space-y-1.5 py-4 text-center sm:text-left', className)} {...props} />
 );
 DialogHeader.displayName = 'DialogHeader';
 
 export const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<div
-		className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
-		{...props}
-	/>
+	<div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)} {...props} />
 );
 DialogFooter.displayName = 'DialogFooter';
 
@@ -108,10 +100,6 @@ export const DialogDescription = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Description>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
-	<DialogPrimitive.Description
-		ref={ref}
-		className={cn('text-sm text-neutral-500', className)}
-		{...props}
-	/>
+	<DialogPrimitive.Description ref={ref} className={cn('text-sm text-neutral-500', className)} {...props} />
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;

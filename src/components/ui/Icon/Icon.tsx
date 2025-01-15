@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { LucideProps } from 'lucide-react';
+import type { LucideProps } from 'lucide-react';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
 import { iconsSvg } from './iconsSvg';
@@ -34,11 +34,7 @@ export const Icon = ({ name, size, ...props }: IconProps) => {
 		const IconSVG = iconsSvg[iconSvgName];
 		return (
 			<React.Suspense fallback={fallback}>
-				<IconSVG
-					role="svgicon"
-					width={foundSize}
-					height={foundSize}
-				/>
+				<IconSVG data-testid="svgicon" width={foundSize} height={foundSize} />
 			</React.Suspense>
 		);
 	}
@@ -49,11 +45,7 @@ export const Icon = ({ name, size, ...props }: IconProps) => {
 
 	return (
 		<React.Suspense fallback={fallback}>
-			<LucideIcon
-				{...props}
-				role="svgicon"
-				size={foundSize}
-			/>
+			<LucideIcon {...props} data-testid="svgicon" size={foundSize} />
 		</React.Suspense>
 	);
 };

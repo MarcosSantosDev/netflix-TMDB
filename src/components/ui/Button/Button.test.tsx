@@ -17,7 +17,7 @@ describe('Button Component', () => {
 		render(<Button icon="check">Button with icon</Button>);
 
 		const button = screen.getByRole('button', { name: /button with icon/i });
-		const icon = await screen.findByRole('svgicon');
+		const icon = await screen.findByTestId('svgicon');
 		expect(button).toBeInTheDocument();
 		expect(button).toContainElement(icon);
 	});

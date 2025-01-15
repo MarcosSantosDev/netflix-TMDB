@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { RouteObject } from 'react-router';
+import type { RouteObject } from 'react-router';
 
 import { RouteErrorElement } from '@/components/app/RouteErrorElement/RouteErrorElement';
 import PrivateLayout from '@/layouts/PrivateLayout';

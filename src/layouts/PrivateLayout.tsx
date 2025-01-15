@@ -20,7 +20,7 @@ const PrivateLayout = () => {
 		if (selectedProfileId.length) {
 			navigate(routePaths.HOME);
 		}
-	}, [selectedProfileId]);
+	}, [selectedProfileId, navigate]);
 
 	React.useEffect(() => {
 		return () => {
@@ -29,21 +29,11 @@ const PrivateLayout = () => {
 	}, []);
 
 	if (!isAuthenticated) {
-		return (
-			<Navigate
-				to={routePaths.SIGN_IN}
-				replace={true}
-			/>
-		);
+		return <Navigate to={routePaths.SIGN_IN} replace={true} />;
 	}
 
 	if (location.pathname === routePaths.ROOT) {
-		return (
-			<Navigate
-				to={routePaths.PROFILES}
-				replace={true}
-			/>
-		);
+		return <Navigate to={routePaths.PROFILES} replace={true} />;
 	}
 
 	return (

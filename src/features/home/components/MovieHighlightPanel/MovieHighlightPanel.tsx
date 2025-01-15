@@ -1,7 +1,7 @@
 import Loading from '@/components/app/Loading/Loading';
 import { Button } from '@/components/ui/Button/Button';
 import { env } from '@/env';
-import { Movie } from '@/features/home/services/@types/home.types';
+import type { Movie } from '@/features/home/services/@types/home.types';
 import { useGetTvInfoQuery } from '@/features/home/services/react-query/useGetTvInfoQuery';
 
 type MovieHighlightPanelProps = {
@@ -41,18 +41,10 @@ const MovieHighlightPanel = ({ movieId }: MovieHighlightPanelProps) => {
 							<span className="text-sm text-neutral-400 md:text-md lg:text-lg">{description}</span>
 						</div>
 						<div className="flex items-center gap-16">
-							<Button
-								icon="play"
-								variant="tertiary"
-								className="px-24"
-							>
+							<Button icon="play" variant="tertiary" className="px-24">
 								Assistir
 							</Button>
-							<Button
-								icon="plus"
-								variant="secondary"
-								className="px-24"
-							>
+							<Button icon="plus" variant="secondary" className="px-24">
 								Minha Lista
 							</Button>
 						</div>

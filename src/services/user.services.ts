@@ -1,4 +1,4 @@
-import { SuccessResponse } from '@/@types/http.types';
+import type { SuccessResponse } from '@/@types/http.types';
 import type { ReadUser } from '@/@types/user.types';
 import { appHttpClient } from '@/services/http';
 

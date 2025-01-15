@@ -2,7 +2,7 @@ import { http } from 'msw';
 
 import { profileMethods } from '@/@mocks/msw/database/modelMethods';
 import { createErrorResponse, createSuccessResponse } from '@/@mocks/msw/responseFactory';
-import { NewProfile, ReadProfile } from '@/@types/profile.types';
+import type { NewProfile, ReadProfile } from '@/@types/profile.types';
 
 export const profileHandlers = [
 	http.get('api/profiles/:id', ({ params }) => {
@@ -16,12 +16,11 @@ export const profileHandlers = [
 					data: profileFound,
 					status: 200,
 				});
-			} else {
-				return createErrorResponse({
-					status: 404,
-					message: 'Perfil não encontrado',
-				});
 			}
+			return createErrorResponse({
+				status: 404,
+				message: 'Perfil não encontrado',
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,
@@ -40,18 +39,17 @@ export const profileHandlers = [
 					status: 400,
 					message: 'Nome do perfil já existe',
 				});
-			} else {
-				const newProfile = profileMethods.createProfile({
-					kidProfile,
-					name,
-					photoURL,
-				});
-
-				return createSuccessResponse({
-					data: newProfile,
-					status: 201,
-				});
 			}
+			const newProfile = profileMethods.createProfile({
+				kidProfile,
+				name,
+				photoURL,
+			});
+
+			return createSuccessResponse({
+				data: newProfile,
+				status: 201,
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,
@@ -87,12 +85,11 @@ export const profileHandlers = [
 					data: updatedProfile,
 					status: 201,
 				});
-			} else {
-				return createErrorResponse({
-					status: 400,
-					message: 'Perfil não encontrado',
-				});
 			}
+			return createErrorResponse({
+				status: 400,
+				message: 'Perfil não encontrado',
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,
@@ -113,12 +110,11 @@ export const profileHandlers = [
 					data: deletedProfile,
 					status: 201,
 				});
-			} else {
-				return createErrorResponse({
-					status: 400,
-					message: 'Perfil não encontrado',
-				});
 			}
+			return createErrorResponse({
+				status: 400,
+				message: 'Perfil não encontrado',
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,

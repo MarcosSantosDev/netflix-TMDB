@@ -11,7 +11,7 @@ export const useGetTvInfoQuery = (seriesId: number) => {
 		queryOptions({
 			queryKey: [GET_TY_INFO_QUERY_KEY, seriesId] as UseGetTvInfoQueryKey,
 			queryFn: () => tmdbService.getTvInfo(seriesId),
-			staleTime: Infinity,
+			staleTime: Number.POSITIVE_INFINITY,
 			enabled: !!seriesId,
 		})
 	);

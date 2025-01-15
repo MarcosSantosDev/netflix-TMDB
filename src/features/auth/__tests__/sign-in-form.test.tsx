@@ -9,7 +9,7 @@ describe('SignInForm', () => {
 	it('should render the form correctly', () => {
 		renderWithQueryClient(<SignInForm />);
 
-		const form = screen.getByRole('form');
+		const form = screen.getByTestId('signIn');
 		const emailInput = screen.getByLabelText(/e-mail/i);
 		const passwordInput = screen.getByLabelText(/senha/i);
 		const submitButton = screen.getByRole('button', { name: /entrar/i });
@@ -26,7 +26,7 @@ describe('SignInForm', () => {
 	it('should render the form errors when fields are not filled in', async () => {
 		renderWithQueryClient(<SignInForm />);
 
-		const form = screen.getByRole('form');
+		const form = screen.getByTestId('signIn');
 
 		const submitButton = screen.getByRole('button', { name: /entrar/i });
 		await userEvent.click(submitButton);
@@ -41,7 +41,7 @@ describe('SignInForm', () => {
 	it('should render the form errors when email is invalid', async () => {
 		renderWithQueryClient(<SignInForm />);
 
-		const form = screen.getByRole('form');
+		const form = screen.getByTestId('signIn');
 
 		const emailInput = screen.getByLabelText(/e-mail/i);
 		const passwordInput = screen.getByLabelText(/senha/i);

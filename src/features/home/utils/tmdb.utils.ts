@@ -1,5 +1,5 @@
-import { Movie } from '@/features/home/services/@types/home.types';
-import { Discover, DiscoverByGenre, MovieList, Trending } from '@/features/home/services/@types/tmdb.types';
+import type { Movie } from '@/features/home/services/@types/home.types';
+import type { Discover, DiscoverByGenre, MovieList, Trending } from '@/features/home/services/@types/tmdb.types';
 
 export const transformDiscoverResults = (movies: Discover[]): Movie[] => {
 	return movies.map((movie) => ({

@@ -13,7 +13,7 @@ export const useGetMovieListTopRatedQuery = () => {
 	return useQuery({
 		queryKey: [GET_MOVIE_LIST_TOP_RATED_QUERY_KEY] as UseGetMovieListTopRatedQueryKey,
 		queryFn: tmdbService.getMovieListTopRated,
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

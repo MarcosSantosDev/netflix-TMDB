@@ -1,4 +1,4 @@
-import { TVInfo } from '@/features/home/services/@types/tmdb.types';
+import type { TVInfo } from '@/features/home/services/@types/tmdb.types';
 
 export const tvInfo: TVInfo = {
 	adult: false,

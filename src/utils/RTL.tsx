@@ -1,7 +1,7 @@
 import { act } from 'react';
 
 import { QueryClientProvider } from '@tanstack/react-query';
-import { render, RenderOptions } from '@testing-library/react';
+import { type RenderOptions, render } from '@testing-library/react';
 
 import { BrowserRouter } from 'react-router';
 

@@ -1,4 +1,4 @@
-import { NewProfile, ReadProfile, UpdateProfile } from '@/@types/profile.types';
+import type { NewProfile, ReadProfile, UpdateProfile } from '@/@types/profile.types';
 
 import { mockAppDB } from '../app.database';
 

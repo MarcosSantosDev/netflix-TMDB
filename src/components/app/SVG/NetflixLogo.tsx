@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
 const NetflixLogo = (props: SVGProps<SVGSVGElement>) => (
 	<svg

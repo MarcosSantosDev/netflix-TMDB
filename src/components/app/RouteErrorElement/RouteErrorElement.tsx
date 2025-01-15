@@ -18,13 +18,7 @@ export const RouteErrorElement = () => {
 		const title = error.status.toString();
 		const subtitle = error.status === 404 ? notFoundMessage : error.statusText;
 
-		return (
-			<RouteErrorElementFallback
-				title={title}
-				subtitle={subtitle}
-				onBackToTop={handleBackToTop}
-			/>
-		);
+		return <RouteErrorElementFallback title={title} subtitle={subtitle} onBackToTop={handleBackToTop} />;
 	}
 
 	throw error;

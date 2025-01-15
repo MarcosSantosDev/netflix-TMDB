@@ -1,4 +1,4 @@
-import { TitleMedia, TMDBResponse } from '@/features/home/services/@types/tmdb.types';
+import type { TMDBResponse, TitleMedia } from '@/features/home/services/@types/tmdb.types';
 
 export const movieByGenderEmptyData: TMDBResponse<TitleMedia> = {
 	results: [],

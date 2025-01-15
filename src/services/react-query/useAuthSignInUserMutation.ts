@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { SuccessResponse } from '@/@types/http.types';
-import { ReadUser } from '@/@types/user.types';
+import type { SuccessResponse } from '@/@types/http.types';
+import type { ReadUser } from '@/@types/user.types';
 import useToast from '@/hooks/useToast';
 import { queryClient } from '@/libs/react-query';
 import authService from '@/services/auth.services';
-import { GET_USER_BY_ID_QUERY_KEY, UseGetUserByIdQueryKey } from '@/services/react-query/useGetUserByIdQuery';
+import { GET_USER_BY_ID_QUERY_KEY, type UseGetUserByIdQueryKey } from '@/services/react-query/useGetUserByIdQuery';
 
 const AUTH_SIGNIN_USER_MUTATION_KEY = 'authSignInUserMutation';
 

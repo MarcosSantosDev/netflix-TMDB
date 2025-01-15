@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 
-import { ReadProfile } from '@/@types/profile.types';
+import type { ReadProfile } from '@/@types/profile.types';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -17,11 +17,7 @@ type ProfileImgProps = {
 };
 
 const ProfileImg = ({ photoURL }: ProfileImgProps) => (
-	<img
-		src={photoURL}
-		alt="Profile"
-		className="h-28 w-28 object-cover md:h-32 md:w-32"
-	/>
+	<img src={photoURL} alt="profile" className="h-28 w-28 object-cover md:h-32 md:w-32" />
 );
 
 type ProfileMenuProps = {
@@ -56,10 +52,7 @@ export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
 				</div>
 			</DropdownMenuTrigger>
 
-			<DropdownMenuContent
-				data-testid="ProfileMenuContent"
-				align="end"
-			>
+			<DropdownMenuContent data-testid="ProfileMenuContent" align="end">
 				<DropdownMenuLabel>
 					<div className="flex items-center justify-start gap-10">
 						<ProfileImg photoURL={photoURL} />
@@ -67,56 +60,29 @@ export const ProfileMenu = ({ profile }: ProfileMenuProps) => {
 					</div>
 				</DropdownMenuLabel>
 
-				<DropdownMenuItem
-					className="cursor-pointer"
-					disabled
-				>
-					<Icon
-						name="scan-face"
-						size="lg"
-					/>
+				<DropdownMenuItem className="cursor-pointer" disabled>
+					<Icon name="scan-face" size="lg" />
 					<span className="text-inherit">Gerenciar perfis</span>
 				</DropdownMenuItem>
 
-				<DropdownMenuItem
-					className="cursor-pointer"
-					onClick={handleChangeProfile}
-				>
-					<Icon
-						name="replace"
-						size="md"
-					/>
+				<DropdownMenuItem className="cursor-pointer" onClick={handleChangeProfile}>
+					<Icon name="replace" size="md" />
 					<span className="text-inherit">Trocar perfil</span>
 				</DropdownMenuItem>
 
-				<DropdownMenuItem
-					className="cursor-pointer"
-					disabled
-				>
-					<Icon
-						name="user"
-						size="md"
-					/>
+				<DropdownMenuItem className="cursor-pointer" disabled>
+					<Icon name="user" size="md" />
 					<span className="text-inherit">Minha conta</span>
 				</DropdownMenuItem>
 
-				<DropdownMenuItem
-					className="cursor-pointer"
-					disabled
-				>
-					<Icon
-						name="circle-help"
-						size="md"
-					/>
+				<DropdownMenuItem className="cursor-pointer" disabled>
+					<Icon name="circle-help" size="md" />
 					<span className="text-inherit">Centro de ajuda</span>
 				</DropdownMenuItem>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem
-					className="flex cursor-pointer justify-center"
-					onClick={handleLogout}
-				>
+				<DropdownMenuItem className="flex cursor-pointer justify-center" onClick={handleLogout}>
 					<span className="text-inherit">Sair da Netflix</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>

@@ -1,15 +1,15 @@
 import { tmdbHttpClient } from '@/services/http';
 import { generateQueryParams } from '@/utils/queryParams';
 
-import {
-	TMDBResponse,
+import type {
 	Discover,
-	Trending,
-	MovieList,
 	DiscoverByGenre,
-	TMDBGenreResponse,
 	Genre,
+	MovieList,
+	TMDBGenreResponse,
+	TMDBResponse,
 	TVInfo,
+	Trending,
 } from './@types/tmdb.types';
 
 const homeService = {

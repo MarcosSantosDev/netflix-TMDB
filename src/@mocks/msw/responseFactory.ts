@@ -1,6 +1,6 @@
 import { HttpResponse } from 'msw';
 
-import { SuccessResponse, ErrorResponse, getHttpCodeCategory } from '@/@types/http.types';
+import { type ErrorResponse, type SuccessResponse, getHttpCodeCategory } from '@/@types/http.types';
 
 export const createSuccessResponse = <T>(successResponse: SuccessResponse<T>) => {
 	return HttpResponse.json(

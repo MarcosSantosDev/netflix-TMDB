@@ -16,7 +16,7 @@ export const useGetUserByIdQuery = () => {
 		select: (data) => {
 			return data.data;
 		},
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

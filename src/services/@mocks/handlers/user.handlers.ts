@@ -14,12 +14,11 @@ export const userHandlers = [
 					data: userFound,
 					status: 200,
 				});
-			} else {
-				return createErrorResponse({
-					status: 404,
-					message: 'Usuário não encontrado',
-				});
 			}
+			return createErrorResponse({
+				status: 404,
+				message: 'Usuário não encontrado',
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,

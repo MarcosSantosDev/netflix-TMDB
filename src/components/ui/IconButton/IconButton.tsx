@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 
 import { cn } from '@/utils/twUtils';
 
@@ -32,10 +32,7 @@ const buttonVariants = cva('flex items-center rounded-sm p-12', {
 
 export const IconButton = ({ children, variant, size, className, ...props }: IconButtonProps) => {
 	return (
-		<button
-			{...props}
-			className={cn(buttonVariants({ variant, size, className }))}
-		>
+		<button {...props} className={cn(buttonVariants({ variant, size, className }))}>
 			{children}
 		</button>
 	);

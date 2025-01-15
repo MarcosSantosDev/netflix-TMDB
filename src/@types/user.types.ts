@@ -1,4 +1,4 @@
-import { ReadProfile } from './profile.types';
+import type { ReadProfile } from './profile.types';
 
 export type UserDB = {
 	id: string;

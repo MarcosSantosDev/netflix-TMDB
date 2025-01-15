@@ -1,6 +1,6 @@
-import axios, { AxiosError } from 'axios';
+import axios, { type AxiosError } from 'axios';
 
-import { ErrorResponse } from '@/@types/http.types';
+import type { ErrorResponse } from '@/@types/http.types';
 
 import { showErrorToast } from './react-toastify';
 

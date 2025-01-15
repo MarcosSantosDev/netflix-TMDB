@@ -13,7 +13,7 @@ export const useGetDiscoverMoviesByGenreIdQuery = (genreId: number) => {
 	return useQuery({
 		queryKey: [GET_DISCOVER_MOVIES_BY_GENRES_QUERY_KEY, genreId] as UseGetDiscoverMoviesByGenresQueryKey,
 		queryFn: () => tmdbService.getDiscoverMoviesByGenreId(genreId),
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

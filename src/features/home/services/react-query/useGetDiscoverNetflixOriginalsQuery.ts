@@ -13,7 +13,7 @@ export const useGetDiscoverNetflixOriginalsQuery = () => {
 	return useQuery({
 		queryKey: [GET_DISCOVER_NETFLIX_ORIGINALS_QUERY_KEY] as UseGetDiscoverNetflixOriginalsQueryKey,
 		queryFn: tmdbService.getDiscoverNetflixOriginals,
-		staleTime: Infinity,
+		staleTime: Number.POSITIVE_INFINITY,
 		enabled: isAuthenticated,
 	});
 };

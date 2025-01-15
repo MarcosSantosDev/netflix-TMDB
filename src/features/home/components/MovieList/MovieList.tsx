@@ -4,8 +4,9 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Movie } from '@/features/home/services/@types/home.types';
+import type { Movie } from '@/features/home/services/@types/home.types';
 
+import { useAccessibleClick } from '@/hooks/useAccessibleClick';
 import MovieListItem from './MovieListItem';
 import MovieListItemSkeleton from './MovieListItemSkeleton';
 
@@ -15,6 +16,8 @@ type ArrowIconProps = React.PropsWithChildren & {
 };
 
 function ArrowIcon({ direction = 'left', onClick }: ArrowIconProps) {
+	const handlers = useAccessibleClick({ onClick });
+
 	return (
 		<div
 			className={clsx(
@@ -26,7 +29,7 @@ function ArrowIcon({ direction = 'left', onClick }: ArrowIconProps) {
 					'right-0': direction === 'right',
 				}
 			)}
-			onClick={onClick}
+			{...handlers}
 		>
 			<Icon
 				className="overflow-hidden text-neutral-1"
@@ -72,26 +75,15 @@ function MovieList({ title = '', movies = [], isLoadingMovies = false }: MovieLi
 	return (
 		<div className="group relative select-none">
 			<h2 className="pl-20 text-lg md:text-xl text-neutral-1">{title}</h2>
-			<ArrowIcon
-				direction="left"
-				onClick={handleClickLeftArrow}
-			/>
-			<ArrowIcon
-				direction="right"
-				onClick={handleClickRightArrow}
-			/>
+			<ArrowIcon direction="left" onClick={handleClickLeftArrow} />
+			<ArrowIcon direction="right" onClick={handleClickRightArrow} />
 			<div
 				className="overflow-x-hidden px-20 transition-all duration-500"
 				style={{ width: widthList, marginLeft: scrollX }}
 			>
 				{isLoadingMovies
 					? skeletonList.map((skeletonId) => <MovieListItemSkeleton key={skeletonId} />)
-					: movies.map((movie) => (
-							<MovieListItem
-								key={movie.id}
-								movie={movie}
-							/>
-						))}
+					: movies.map((movie) => <MovieListItem key={movie.id} movie={movie} />)}
 			</div>
 		</div>
 	);

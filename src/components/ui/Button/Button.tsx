@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
 
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 
 import { Icon } from '@/components/ui/Icon/Icon';
 import type { IconNames } from '@/components/ui/Icon/Icon';
@@ -41,28 +41,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, asChild = false, children, icon, ...props }, ref) => {
 		if (asChild) {
 			return (
-				<Slot
-					className={cn(buttonVariants({ variant, size, className }))}
-					ref={ref}
-					{...props}
-				>
+				<Slot className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
 					{children}
 				</Slot>
 			);
 		}
 
 		return (
-			<button
-				className={cn(buttonVariants({ variant, size, className }))}
-				ref={ref}
-				{...props}
-			>
-				{icon && (
-					<Icon
-						name={icon}
-						size="sm"
-					/>
-				)}
+			<button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+				{icon && <Icon name={icon} size="sm" />}
 				<span>{children}</span>
 			</button>
 		);

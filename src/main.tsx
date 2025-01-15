@@ -1,11 +1,7 @@
-import * as React from 'react';
-
-import ReactDOM from 'react-dom/client';
-
 import { enableMocking } from '@/@mocks/msw/config/browser';
-
+import * as React from 'react';
+import ReactDOM from 'react-dom/client';
 import '@/styles/globals.css';
-
 import Router from './router';
 
 const container = document.getElementById('root') as HTMLElement;

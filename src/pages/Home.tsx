@@ -11,8 +11,8 @@ import { useGetMovieListTopRatedQuery } from '@/features/home/services/react-que
 import { useGetTrendingQuery } from '@/features/home/services/react-query/useGetTrendingQuery';
 import {
 	transformDiscoverResults,
-	transformTrendingResults,
 	transformMovieListTopRatedResults,
+	transformTrendingResults,
 } from '@/features/home/utils/tmdb.utils';
 import { generateRandomBetween } from '@/utils/number';
 
@@ -61,10 +61,7 @@ const HomePage = () => {
 				/>
 
 				{genres?.genres.map((genre) => (
-					<MovieByGenre
-						key={genre.id}
-						genre={genre}
-					/>
+					<MovieByGenre key={genre.id} genre={genre} />
 				))}
 			</div>
 		</div>

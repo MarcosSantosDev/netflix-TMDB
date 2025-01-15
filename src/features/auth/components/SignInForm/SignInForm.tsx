@@ -38,36 +38,24 @@ const SignInForm = () => {
 
 	return (
 		<form
-			role="form"
 			onSubmit={form.handleSubmit(onSubmit)}
 			className="flex flex-col gap-20"
 			autoComplete="off"
+			data-testid="signIn"
 		>
 			<div className="grid grid-cols-1 space-y-6">
 				<Form.FormFieldContent>
 					<Label htmlFor="email">E-mail</Label>
-					<Input
-						{...form.register('email')}
-						id="email"
-						type="text"
-						placeholder="E-mail"
-					/>
+					<Input {...form.register('email')} id="email" type="text" placeholder="E-mail" />
 					<Form.FormMessage error={form.formState.errors.email} />
 				</Form.FormFieldContent>
 				<Form.FormFieldContent>
 					<Label htmlFor="password">Senha</Label>
-					<PasswordInput
-						{...form.register('password')}
-						id="password"
-						placeholder="*******"
-					/>
+					<PasswordInput {...form.register('password')} id="password" placeholder="*******" />
 					<Form.FormMessage error={form.formState.errors.password} />
 				</Form.FormFieldContent>
 			</div>
-			<Button
-				type="submit"
-				disabled={isLoadingSignIn}
-			>
+			<Button type="submit" disabled={isLoadingSignIn}>
 				Entrar
 			</Button>
 		</form>

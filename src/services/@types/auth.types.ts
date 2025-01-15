@@ -1,5 +1,5 @@
-import { SuccessResponse } from '@/@types/http.types';
-import { ReadUser } from '@/@types/user.types';
+import type { SuccessResponse } from '@/@types/http.types';
+import type { ReadUser } from '@/@types/user.types';
 
 export type AuthSignInReturn = SuccessResponse<{
 	user: ReadUser;

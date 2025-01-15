@@ -14,12 +14,7 @@ describe('Input Component', () => {
 	});
 
 	it('should apply additional className', () => {
-		render(
-			<Input
-				type="text"
-				className="custom-class"
-			/>
-		);
+		render(<Input type="text" className="custom-class" />);
 
 		const input = screen.getByRole('textbox');
 		expect(input).toHaveClass('custom-class');
@@ -36,45 +31,25 @@ describe('Input Component', () => {
 
 	it('should forward the ref correctly', () => {
 		const ref = React.createRef<HTMLInputElement>();
-		render(
-			<Input
-				type="text"
-				ref={ref}
-			/>
-		);
+		render(<Input type="text" ref={ref} />);
 
 		expect(ref.current).toBeInstanceOf(HTMLInputElement);
 	});
 
 	it('should handle disabled state', () => {
-		render(
-			<Input
-				type="text"
-				disabled
-			/>
-		);
+		render(<Input type="text" disabled />);
 
 		const input = screen.getByRole('textbox');
 		expect(input).toBeDisabled();
 	});
 
 	it('should render input type correctly', () => {
-		const { rerender } = render(
-			<Input
-				data-testid="input-type-email"
-				type="email"
-			/>
-		);
+		const { rerender } = render(<Input data-testid="input-type-email" type="email" />);
 
 		const inputTypeEmail = screen.getByTestId('input-type-email');
 		expect(inputTypeEmail).toHaveAttribute('type', 'email');
 
-		rerender(
-			<Input
-				data-testid="input-type-password"
-				type="password"
-			/>
-		);
+		rerender(<Input data-testid="input-type-password" type="password" />);
 
 		const inputTypePassword = screen.getByTestId('input-type-password');
 		expect(inputTypePassword).toHaveAttribute('type', 'password');

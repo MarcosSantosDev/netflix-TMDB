@@ -1,5 +1,5 @@
-import { SuccessResponse } from '@/@types/http.types';
-import type { ReadProfile, NewProfile } from '@/@types/profile.types';
+import type { SuccessResponse } from '@/@types/http.types';
+import type { NewProfile, ReadProfile } from '@/@types/profile.types';
 import { appHttpClient } from '@/services/http';
 
 const profileService = {

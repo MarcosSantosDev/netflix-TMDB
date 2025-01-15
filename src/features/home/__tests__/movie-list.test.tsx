@@ -6,13 +6,7 @@ import MovieList from '../components/MovieList/MovieList';
 
 describe('MovieList', () => {
 	it('should render title of movie section correctly', () => {
-		render(
-			<MovieList
-				title="Popular Movies"
-				isLoadingMovies={false}
-				movies={[]}
-			/>
-		);
+		render(<MovieList title="Popular Movies" isLoadingMovies={false} movies={[]} />);
 
 		const titleOfMovieSection = screen.getByText('Popular Movies');
 		const movieListItemSkeleton = screen.queryAllByTestId('movie-list-item-skeleton');
@@ -24,13 +18,7 @@ describe('MovieList', () => {
 	});
 
 	it('should render loading movie list correctly', () => {
-		render(
-			<MovieList
-				title="Popular Movies"
-				isLoadingMovies
-				movies={[]}
-			/>
-		);
+		render(<MovieList title="Popular Movies" isLoadingMovies movies={[]} />);
 
 		const movieListItemSkeleton = screen.getAllByTestId('movie-list-item-skeleton');
 		const movieListItem = screen.queryAllByTestId('movie-list-item');

@@ -20,12 +20,11 @@ export const authHandlers = [
 					},
 					status: 200,
 				});
-			} else {
-				return createErrorResponse({
-					status: 401,
-					message: 'E-mail ou senha incorretos',
-				});
 			}
+			return createErrorResponse({
+				status: 401,
+				message: 'E-mail ou senha incorretos',
+			});
 		} catch {
 			return createErrorResponse({
 				status: 503,
